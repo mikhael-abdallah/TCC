@@ -1,0 +1,51 @@
+%!TeX root=../tese.tex
+%("dica" para o editor de texto: este arquivo é parte de um documento maior)
+
+\chapter{Contexto do Bike~SP e painel administrativo}
+\label{cap:contexto-painel}
+
+\section{Programa Bike~SP}
+O Bike~SP é um programa público que visa incentivar deslocamentos funcionais por
+bicicleta por meio de créditos de mobilidade. Já o \textit{piloto} é uma etapa
+experimental, delimitada no tempo e no escopo, concebida para testar variáveis
+de implementação (por exemplo, níveis de incentivo), observar comportamentos de
+uso e coletar evidências que subsidiem o aperfeiçoamento e o eventual
+escalonamento do programa. Em outras palavras, o programa é a política pública;
+o piloto é o experimento que informa sua execução
+\citep{faria2023:bikespCaseStudy, interscity:pilotoBikeSP}.
+
+\section{Piloto: cronograma, inscrições, seleção, atores e processos}
+\textbf{Cronograma.} \begin{itemize}
+  \item \textbf{Abril--Maio}: pré-teste com participantes beta; o painel foi
+        utilizado desde o início para acompanhar registros e validar fluxos.
+  \item \textbf{Três meses de inscrições}: processo conduzido via LimeSurvey;
+        ao final, foram recebidas \textbf{cerca de 3000 candidaturas}.
+  \item \textbf{Julho}: uso ampliado do aplicativo; a equipe operou o painel
+        para monitorar o uso em tempo quase real e oferecer suporte a usuários
+        com dificuldades.
+  \item \textbf{Agosto}: execução do piloto principal em \textbf{4 semanas}.
+\end{itemize}
+
+\textbf{Inscrições e seleção.} O formulário de inscrição (LimeSurvey) permitiu
+coleta padronizada de dados demográficos e de contexto de mobilidade. A seleção
+considerou o desenho experimental e o balanceamento de perfis e regiões ao
+atribuir participantes a grupos de controle e tratamento.
+
+\textbf{Atores e processos.} Atores principais: participantes, equipe de
+operação e suporte, equipe de pesquisa, parceiros institucionais e equipe de
+desenvolvimento. Processos-chave: inscrição e triagem; amostragem; registro de
+viagens; validação de elegibilidade; cálculo de créditos; tratamento de
+\emph{contestações}; reporting e análise. Informações adicionais e materiais
+técnicos estão na wiki do aplicativo\citep{bikesp:wiki}.
+
+\section{Objetivos do trabalho}
+Este TCC tem por objetivo desenvolver um \textbf{painel administrativo} capaz
+de dar suporte efetivo aos processos fundamentais do programa durante o piloto,
+atuando como ferramenta central de operação e governança. Em alto nível, o
+painel deve oferecer: (i) visibilidade sobre cadastros, elegibilidade e
+amostras; (ii) acompanhamento de viagens registradas no aplicativo; (iii)
+cálculo de créditos com trilhas de auditoria e apoio a pagamentos; (iv)
+tratamento de contestações; e (v) exportações e insumos para monitoramento e
+análise.
+
+

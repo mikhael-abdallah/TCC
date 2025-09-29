@@ -1,19 +1,14 @@
-# IME/USP LaTeX Template
+# TCC IME/USP — BikeSP: Painel Administrativo
 
-A LaTeX template for Masters and PhD/Doctorate dissertations/theses
-according to IME/USP guidelines. Note that the actual formatting of
-the document (fonts, cover layout, spacing etc.) is *not* mandatory;
-the guidelines deal with the document structure only (the [description
-of the guidelines](https://www.ime.usp.br/dcc/pos/normas/tesesedissertacoes)
-is included in the template). The template is expected to be useful
-for unexperienced LaTeX users. Feel free to customize to your needs
-and, if appropriate, send us improvements. :)
+Este repositório utiliza o modelo LaTeX do IME/USP já configurado para o seu
+TCC sobre o Bike~SP (painel administrativo). Use os comandos abaixo para
+compilar e veja a estrutura de arquivos para editar conteúdo.
 
-The [generated PDF file](https://gitlab.com/ccsl-usp/modelo-latex/raw/main/pre-compilados/tese-exemplo.pdf?inline=false)
-includes a FAQ, a short (but reasonably
-compreehensive) LaTeX tutorial, and some examples of LaTeX commands.
-There is also a simple and short [cheat sheet](https://gitlab.com/ccsl-usp/modelo-latex/raw/main/pre-compilados/colinha.pdf?inline=false)
-(in Portuguese).
+Referências úteis:
+- **Normas IME/DCC**: https://www.ime.usp.br/dcc/pos/normas/tesesedissertacoes
+- **BikeSP — piloto**: https://interscity.org/bikesp/piloto/
+- **Resumo do projeto (CRBAM23)**: https://interscity.org/assets/CRBAM23_BookOfAbstracts_pgs_71_to_74-Ana-Yoon-Faria-de-Lima.pdf
+- **Wiki do app BikeSP**: https://gitlab.com/interscity/bikesp/bikespapp/-/wikis/home
 
 Besides that, there are lots of comments in the .tex and .sty files
 about the packages used and things you might want to customize or
@@ -21,21 +16,37 @@ learn more about. These comments are in Brazilian Portuguese. Even
 if you have some LaTeX experience, you may benefit from skimming the
 comments, tutorial, and examples, as they include some useful tips.
 
-You need a reasonably recent working LaTeX installation (TeXLive 2020
-works), including biber and biblatex (among other packages). The example
-documents may be compiled with `latexmk` and this repo includes compiled
-versions of them.
+## Como compilar
 
-## FAQ
+Pré-requisitos (Ubuntu/Debian):
+```
+sudo apt install biber latexmk texlive-plain-generic texlive-latex-base texlive-luatex lmodern fonts-lmodern texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra texlive-bibtex-extra texlive-science texlive-lang-english texlive-lang-portuguese
+```
 
-There is a FAQ in the example document and this repo includes a
-[compiled version of it in PDF format](https://gitlab.com/ccsl-usp/modelo-latex/raw/main/pre-compilados/tese-exemplo.pdf?inline=false).
+Compilação:
+```
+make        # gera tese.pdf
+make clean  # limpa temporários
+make distclean # limpa também PDFs gerados
+```
 
-## Used packages and installation
+## Estrutura do TCC
 
-There are some instalation instructions in the [example document,
-included in this repo in PDF format](https://gitlab.com/ccsl-usp/modelo-latex/raw/main/pre-compilados/tese-exemplo.pdf?inline=false).
-The template uses makeindex, biber, and many LaTeX packages.
+- `tese.tex`: arquivo principal. Já configurado como TCC e apontando para os capítulos do Bike~SP.
+- `conteudo/resumoabstract.tex`: resumo/abstract com palavras-chave; personalize conforme necessário.
+- `conteudo/00-introducao-bikesp.tex`: introdução ao Bike~SP e objetivo do TCC.
+- `conteudo/01-contexto-painel.tex`: cronograma (pré-teste, inscrições LimeSurvey ~3000 candidatos, julho e 4 semanas de agosto), atores/processos e objetivos do painel.
+- `conteudo/02-implementacao.tex`: arquitetura, módulos, pagamentos/contestações e diretrizes de screenshots.
+- `conteudo/03-resultados.tex`: resultados operacionais e estado da análise de dados.
+- `conteudo/04-conclusao.tex`: conclusão e trabalhos futuros.
+- `bibliografia.bib`: referências (inclui CRBAM23, piloto InterSCity, wiki BikeSP e MAC0499).
+
+## Diretrizes para figuras (screenshots)
+
+- **Legibilidade**: capture em resolução suficiente para impressão; evite compressão excessiva.
+- **Anonimização**: oculte dados pessoais (nome, email, IDs).
+- **Explicação no texto**: além da legenda, descreva no corpo do texto o contexto, a tarefa sendo exibida e o que observar.
+- **Consistência**: use o mesmo tema de cores e zoom entre figuras relacionadas.
 
 The template probably includes all packages you'd expect, such as the
 AMS packages (amsthm, amsmath etc.), babel, geometry, hyperref, graphicx,
@@ -69,17 +80,13 @@ texlive-lang-english, and texlive-lang-portuguese. Just run
 
 `sudo apt install biber latexmk texlive-plain-generic texlive-latex-base texlive-luatex lmodern fonts-lmodern texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra texlive-bibtex-extra texlive-science texlive-lang-english texlive-lang-portuguese`
 
-## Acknowledgements
+## Dicas rápidas
 
- * Original version: Jesús P. Mena-Chalco
- * Revision: Fabio Kon and Paulo Feofiloff
- * Latest updates (utf8, biblatex etc.): Nelson Lago
+- Ajuste metadados em `tese.tex` (`\title`, `\author`, `\orientador`, `\defesa`).
+- Use `\cite{...}` para referenciar CRBAM23, piloto InterSCity e wiki BikeSP conforme necessário.
+- Siga o cronograma descrito no capítulo de contexto ao relatar atividades.
 
-## License
+## Licenças
 
-The files that are derived from other projects (natbib-ime.sty,
-alpha-ime.bst etc.) are subject to their own licenses. The rest
-of the code is available under the MIT License. The example text,
-which includes the tutorial and examples, as well as the explanatory
-comments in the source, are available under the [Creative Commons
-Attribution International Licence, v4.0 (CC-BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+Este repo mantém as licenças originais do modelo IME/USP. O texto deste TCC
+pode usar CC-BY ou outra Creative Commons conforme `\direitos{...}` em `tese.tex`.

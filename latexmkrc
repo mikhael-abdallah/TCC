@@ -50,12 +50,25 @@ $rc_report = 0;
 # Make latexmk -c/-C clean *all* generated files
 $cleanup_includes_generated = 1;
 $cleanup_includes_cusdep_generated = 1;
-$bibtex_use = 2;
+# Use bibtex (1) instead of biber (2) to avoid environment issues
+$bibtex_use = 1;
 
 # https://tex.stackexchange.com/a/384153
 $ENV{max_print_line} = $log_wrap = 100000;
 $ENV{error_line} = 254;
 $ENV{half_error_line} = 238;
+
+# Ensure biber can find system Perl libraries when running under wrapped environments
+# that override @INC (e.g., AppImage/embedded Perl). This exposes standard distro paths.
+$ENV{PERL5LIB} = join(':', grep { defined && length } (
+  '/usr/share/perl5',
+  '/usr/lib/x86_64-linux-gnu/perl5',
+  '/usr/lib/perl5',
+  $ENV{PERL5LIB}
+));
+
+# Force system library paths precedence for Perl modules used by biber
+$ENV{PERL5OPT} = '-Mlib=/usr/share/perl5 -Mlib=/usr/lib/x86_64-linux-gnu/perl5 -Mlib=/usr/lib/perl5';
 
 END {
   local $?; # do not override previous exit status

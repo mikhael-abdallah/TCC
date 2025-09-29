@@ -30,6 +30,9 @@
 %\documentclass[a4paper,12pt,twoside,brazilian,english]{book}
 \documentclass[a4paper,12pt,twoside,english,brazilian]{book}
 
+% Força o biblatex a usar o backend bibtex (evita problemas com biber no ambiente)
+\PassOptionsToPackage{backend=bibtex}{biblatex}
+
 % O preâmbulo de um documento LaTeX pode ser razoavelmente longo. Neste
 % modelo, optamos por reduzi-lo, colocando praticamente tudo do preâmbulo
 % nas packages "imegoodies" e "imelooks".
@@ -91,21 +94,21 @@
 % Estes comandos definem o título e autoria do trabalho e devem sempre ser
 % definidos, pois além de serem utilizados para criar a capa, também são
 % armazenados nos metadados do PDF. O subtítulo é opcional.
-\title{Título do trabalho}[um subtítulo]
-\translatedtitle{Title of the document}[a subtitle]
+\title{Painel Administrativo para o Piloto BikeSP}[TCC IME/USP]
+\translatedtitle{Administrative Dashboard for the BikeSP Pilot}[Undergraduate Capstone]
 
-\author[fem]{Nome Completo}
+\author[masc]{Mikhael Abdallah de Oliveira Pinto}
 
 \def\profa{Prof\kern.02em.\kern-.07emª\kern.07em}
 \def\dra{Dr\kern-.04em.\kern-.11emª\kern.07em}
 
 % Para TCCs, este comando define o supervisor
-\orientador[fem]{\profa{} \dra{} Fulana de Tal}
+\orientador[masc]{Prof. Dr. Fabio Kon}
 
 % Se não houver, remova; se houver mais de um, basta
 % repetir o comando quantas vezes forem necessárias
-\coorientador{Prof. Dr. Ciclano de Tal}
-\coorientador[fem]{\profa{} \dra{} Beltrana de Tal}
+\coorientador{Prof. Dr. Paulo Roberto Miranda Meirelles }
+% \coorientador[fem]{\profa{} \dra{} Beltrana de Tal}
 
 \banca{
   \profa{} \dra{} Fulana de Tal (orientadora) -- IME-USP [sem ponto final],
@@ -120,9 +123,9 @@
 % definitiva (ou seja, a versão final após a incorporação das sugestões
 % da banca).
 \tipotese{
-  mestrado,
+  %mestrado,
   %doutorado,
-  %tcc,
+  tcc,
   %definitiva, % É a versão para defesa ou a versão definitiva?
   %quali, % É qualificação?
   programa={Ciência da Computação},
@@ -130,7 +133,7 @@
 
 \defesa{
   local={São Paulo},
-  data=2017-08-10, % YYYY-MM-DD
+  data=2025-06-30, % YYYY-MM-DD (ajuste a data conforme necessário)
 }
 
 % Se não houve bolsa, remova
@@ -155,8 +158,8 @@
 %
 %\apoio{During the development if this work, the author received\\
 %      financial support from FAPESP -- grant \#aaaa/nnnnn-d}
-\apoio{Durante o desenvolvimento deste trabalho o autor
-       recebeu auxílio financeiro da XXXX}
+% \apoio{Durante o desenvolvimento deste trabalho o autor
+      %  recebeu auxílio financeiro da XXXX}
 
 % A licença do seu trabalho. Use CC-BY, CC-BY-NC, CC-BY-ND, CC-BY-SA,
 % CC-BY-NC-SA ou CC-BY-NC-ND para escolher a licença Creative Commons
@@ -264,12 +267,7 @@ texto texto texto texto. Texto opcional.
 \disablenewpage{\chapter*{Lista de abreviaturas}}
 
 \begin{tabular}{rl}
-   CFT & Transformada contínua de Fourier (\emph{Continuous Fourier Transform})\\
-   DFT & Transformada discreta de Fourier (\emph{Discrete Fourier Transform})\\
-  EIIP & Potencial de interação elétron-íon (\emph{Electron-Ion Interaction Potentials})\\
-  STFT & Transformada de Fourier de tempo reduzido (\emph{Short-Time Fourier Transform})\\
-  ABNT & Associação Brasileira de Normas Técnicas\\
-   URL & Localizador Uniforme de Recursos (\emph{Uniform Resource Locator})\\
+   API & Interface de Programação de Aplicações (\emph{Application Programming Interface})\\
    IME & Instituto de Matemática e Estatística\\
    USP & Universidade de São Paulo
 \end{tabular}
@@ -278,9 +276,9 @@ texto texto texto texto. Texto opcional.
 \disablenewpage{\chapter*{Lista de símbolos}}
 
 \begin{tabular}{rl}
-  $\omega$ & Frequência angular\\
-    $\psi$ & Função de análise \emph{wavelet}\\
-    $\Psi$ & Transformada de Fourier de $\psi$\\
+  % $\omega$ & Frequência angular\\
+  %   $\psi$ & Função de análise \emph{wavelet}\\
+  %   $\Psi$ & Transformada de Fourier de $\psi$\\
 \end{tabular}
 
 % Quebra de página manual
@@ -341,13 +339,12 @@ texto texto texto texto. Texto opcional.
 
 % A introdução não tem número de capítulo, então os cabeçalhos também não
 \pagestyle{unnumberedchapter}
-\input{conteudo/00-exemplo-introducao}
+\input{conteudo/00-introducao-bikesp}
 \pagestyle{mainmatter}
-\input{conteudo/01-exemplo-normas-ime}
-\input{conteudo/02-exemplo-usando-o-modelo}
-\input{conteudo/03-exemplo-latex}
-\input{conteudo/04-exemplo-tutorial}
-\input{conteudo/05-exemplo-exemplos}
+\input{conteudo/01-contexto-painel}
+\input{conteudo/02-implementacao}
+\input{conteudo/03-resultados}
+\input{conteudo/04-conclusao}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% APÊNDICES E ANEXOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -385,25 +382,25 @@ texto texto texto texto. Texto opcional.
 % só há apêndices, sem anexos, provavelmente não é necessário.
 \addappheadtotoc
 
-\input{conteudo/apendice-exemplo-faq}
+% \input{conteudo/apendice-exemplo-faq}
 \par
 
-%%%% Anexos %%%%
-
-\cleardoublepage
-
-\pagestyle{appendix} % repete o anterior, caso você não use apêndices
-
-\annex
-
-% \addappheadtotoc acrescenta a palavra "Anexo" ao sumário; se
-% só há anexos, sem apêndices, provavelmente não é necessário.
-\addappheadtotoc
-
-\input{conteudo/anexo-exemplo-imegoodies}
-\par
-\input{conteudo/anexo-exemplo-pseudocodigo}
-\par
+%%%% Anexos (removidos no TCC; reative se necessário) %%%%
+%
+%\cleardoublepage
+%
+%\pagestyle{appendix} % repete o anterior, caso você não use apêndices
+%
+%\annex
+%
+%% \addappheadtotoc acrescenta a palavra "Anexo" ao sumário; se
+%% só há anexos, sem apêndices, provavelmente não é necessário.
+%\addappheadtotoc
+%
+%\input{conteudo/anexo-exemplo-imegoodies}
+%\par
+%\input{conteudo/anexo-exemplo-pseudocodigo}
+%\par
 
 
 %%%%%%%%%%%%%%% SEÇÕES FINAIS (BIBLIOGRAFIA E ÍNDICE REMISSIVO) %%%%%%%%%%%%%%%%

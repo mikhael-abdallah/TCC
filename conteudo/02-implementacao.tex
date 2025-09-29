@@ -1,0 +1,119 @@
+%!TeX root=../tese.tex
+%("dica" para o editor de texto: este arquivo é parte de um documento maior)
+
+\chapter{O painel administrativo}
+\label{cap:implementacao}
+
+\section{Arquitetura de software}
+O painel adota arquitetura web modular e integra-se a serviços de autenticação,
+cadastro de participantes, registros de viagens, contestações e processamento de
+créditos/pagamentos. As principais conexões externas incluem o \textit{App Mobile}
+dos participantes, o sistema de pagamentos (por exemplo, SPTrans), a equipe de
+economistas, suporte/atendimento e coordenação.
+
+\begin{figure}[H]
+  \centering
+  % Insira o arquivo em figuras/ com resolução adequada para impressão
+  \IfFileExists{figuras/arquitetura.pdf}{%
+    \includegraphics[width=.92\textwidth]{figuras/arquitetura.pdf}%
+  }{%
+    \IfFileExists{figuras/arquitetura.png}{%
+      \includegraphics[width=.92\textwidth]{figuras/arquitetura.png}%
+    }{%
+      \fbox{\parbox{.9\textwidth}{Diagrama de arquitetura (placeholder). Inserir em figuras/arquitetura.pdf/png mostrando: Painel no centro; integrações com App Mobile, backend de dados, módulo de pagamentos (SPTrans), economistas, suporte e coordenação.}}%
+    }%
+  }%
+  \caption{Arquitetura de alto nível: módulos e integrações do painel.}
+  \label{fig:arquitetura}
+\end{figure}
+
+\section{Processo de desenvolvimento}
+O desenvolvimento envolveu múltiplos stakeholders e ciclos curtos de validação:
+economistas (por exemplo, Thainá), suporte/atendimento (Sávio), coordenação e
+orientação (Fábio e Paulo), além da equipe técnica. As demandas foram
+priorizadas e acompanhadas via registro de \textit{issues}, criação de
+\textit{pull requests} e revisão colaborativa, com homologação contínua durante
+o pré-teste, o período de inscrições, a preparação de julho e a execução do
+piloto.
+
+\section{Abas do painel e uso no piloto}
+As figuras desta seção devem ser incluídas com resolução adequada para
+impressão; além de legendas, descreva no texto o contexto e o que observar em
+cada captura.
+
+\subsection{Usuários}
+Explicar fluxo de inscrição no LimeSurvey e script que buscava os usuários no
+LimeSurvey e insere os usuários no banco de dados do app.
+
+Após a inserção, o usuário pode ser visualizado na tela de usuários.
+A tela apresenta uma tabela os dados principais do usuário, como id, nome, email,
+cpf, bilhete único e se tem senha cadastrada.
+O id do usuário era usado em processos importantes, como na gestão de bônus e coortes.
+Nessa tabela, é possível buscar usuários por nome ou id, ordenar por coluna,
+paginar e ajustar a densidade/quantidade de linhas por página.
+
+
+\subsection{Coortes}
+Explicar o que é uma coorte no contexto do BikeSP.
+Coortes representam grupos experimentais/remuneração. Foi disponibilizada uma
+página para criar e atualizar coortes e acompanhar um quadro sintético (ID,
+remuneração e quantidade de membros). Além disso, também tem uma busca por participantes
+das coortes, que inclui filtros por coorte e métricas de viagens, apoiando decisões
+operacionais e o monitoramento do andamento do piloto.
+
+É possível fazer uma atribuição em lote para configurar as coortes de múltiplos usuários
+simultaneamente, explicar como essa função foi usada.
+
+E também é possível exportar uma planilha com os usuários e suas coortes,
+para facilitar tarefas administrativas recorrentes.
+
+
+\subsection{Bônus}
+Explicar o que é o bônus no contexto do BikeSP.
+Gestão de bônus para usuários. Criação de bônus, ativação/desativação de bônus,
+Atribuição de bônus aos participantes. 
+
+A busca de bônus foi padronizada para apresentar datas e estados (ativo/inativo)
+de forma consistente. Também passou a ser possível alterar o estado do bônus
+diretamente na listagem, favorecendo a manutenção rápida das regras durante a
+execução do piloto.
+
+
+\subsection{Remuneração}
+Explicar como era feito o processo de remuneração dos participantes.
+O painel gera um CSV com os dados que deviam ser enviados à SPTrans para o pagamento
+das viagens elegíveis.
+
+O painel recebe um upload dos pagamentos realizados pela SPTrans, e debita os valores
+do aplicativo do participante.
+
+
+\subsection{Contestações}
+Explicar o que são contestações e como podiam acontecer.
+O painel permitia a visualização das contestações e o processo de aprovação/rejeição
+das contestações. Nela, o administrador podia ver a viagem contestada, o motivo da
+contestação, e decidir se a contestação era válida ou não.
+
+
+\subsection{Viagens}
+A tela de viagens exibia uma tabela com os dados principais da viagem, como id,
+id do participante, data, local de início e fim, distância, remuneração e status.
+A tabela apresentava busca por usuário, paginação e ajuste de densidade/quantidade 
+de linhas por página. 
+
+Ao clicar na viagem, o mapa contendo o trajeto da viagem era exibido.
+
+Além disso, era possível exportar todas as viagens para CSV.
+
+\subsection{Notificações}
+Explicar o que são notificações e como podem ser enviadas.
+Notificação por email e notificações push.
+Podem ser direcionadas para um ou mais participantes, para participantes de uma coorte 
+ou para todos os participantes.
+As notificações também eram enviadas em cópia oculta para o email do administrador.
+
+\subsection{Localizações}
+Explicar o cadastro dos locais no LimeSurvey e como os locais deveriam ser usados
+pelo usuário no app.
+Gerenciamento de localizações do usuário, permitindo que ele alterasse suas localizações.
+
