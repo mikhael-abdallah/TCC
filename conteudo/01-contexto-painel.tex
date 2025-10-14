@@ -14,6 +14,28 @@ escalonamento do programa. Em outras palavras, o programa é a política públic
 o piloto é o experimento que informa sua execução
 \citep{faria2023:bikespCaseStudy, interscity:pilotoBikeSP}.
 
+Um projeto piloto é um experimento de pequena escala que permite testar a
+viabilidade e efetividade de uma intervenção antes de escaloná-la para uma
+população maior\citep{pearson2020}. A escolha do piloto como meio de guiar a
+implementação do Bike~SP é motivada pela necessidade de dados precisos e do
+mundo real.
+
+Métodos tradicionais de pesquisa por questionários, embora úteis, frequentemente
+falham em capturar a complexidade do comportamento real, pois pode haver
+divergência significativa entre o que indivíduos afirmam que farão e o que
+efetivamente fazem\citep{rundle2009}. Assim, o piloto simula a política real ao
+compensar participantes por suas viagens de bicicleta, fornecendo dados sobre
+como tal política poderia funcionar na prática.
+
+Além disso, o programa Bike~SP tem potencial para integrar as agendas de justiça
+social e ambiental, ao reduzir os custos de mobilidade de grupos de menor renda
+e aumentar a equidade no transporte. Os créditos de transporte público obtidos
+pedalando podem ser usados para pagar outras viagens (por ônibus, metrô ou trem),
+beneficiando especialmente populações de baixa renda.
+
+Dessa forma, o programa promove não apenas o aumento da participação modal do
+ciclismo, mas também a equidade de mobilidade\citep{vanoutrive2020, jeekel2017}.
+
 \section{Piloto: cronograma, inscrições, seleção, atores e processos}
 \textbf{Cronograma.} \begin{itemize}
   \item \textbf{Abril--Maio}: pré-teste com participantes beta; o painel foi
@@ -21,22 +43,46 @@ o piloto é o experimento que informa sua execução
   \item \textbf{Três meses de inscrições}: processo conduzido via LimeSurvey;
         ao final, foram recebidas \textbf{cerca de 3000 candidaturas}.
   \item \textbf{Julho}: uso ampliado do aplicativo; a equipe operou o painel
-        para monitorar o uso em tempo quase real e oferecer suporte a usuários
+        para monitorar o uso e oferecer suporte a usuários
         com dificuldades.
   \item \textbf{Agosto}: execução do piloto principal em \textbf{4 semanas}.
 \end{itemize}
 
 \textbf{Inscrições e seleção.} O formulário de inscrição (LimeSurvey) permitiu
-coleta padronizada de dados demográficos e de contexto de mobilidade. A seleção
-considerou o desenho experimental e o balanceamento de perfis e regiões ao
-atribuir participantes a grupos de controle e tratamento.
+coleta padronizada de dados demográficos e de contexto de mobilidade. Com o
+apoio de aparições na mídia, foram obtidas aproximadamente \textbf{3~mil
+inscrições}. A seleção final considerou o desenho experimental e o balanceamento
+de perfis e regiões, resultando em \textbf{1217 candidatos selecionados} para
+participação no piloto. Para evitar viés, foram excluídos cicloativistas
+reconhecidos, priorizando usuários representativos do público-alvo da política
+pública.
 
-\textbf{Atores e processos.} Atores principais: participantes, equipe de
-operação e suporte, equipe de pesquisa, parceiros institucionais e equipe de
-desenvolvimento. Processos-chave: inscrição e triagem; amostragem; registro de
-viagens; validação de elegibilidade; cálculo de créditos; tratamento de
-\emph{contestações}; reporting e análise. Informações adicionais e materiais
-técnicos estão na wiki do aplicativo\citep{bikesp:wiki}.
+\textbf{Desenho experimental e coortes.} O experimento foi estruturado com base
+em \textbf{três coortes} (grupos experimentais) com diferentes níveis de
+remuneração, conforme planejado pela equipe de economistas:
+\begin{itemize}
+  \item \textbf{Coorte 1 (controle)}: sem remuneração por viagens;
+  \item \textbf{Coorte 2}: remuneração de R\$\,0,30 por quilômetro pedalado,
+        limitado a 2 viagens por dia;
+  \item \textbf{Coorte 3}: remuneração de R\$\,0,60 por quilômetro pedalado,
+        também limitado a 2 viagens por dia.
+\end{itemize}
+A título de exemplo, um participante da Coorte~3 que percorresse 8~km em uma
+viagem receberia R\$\,4,80 --- valor próximo ao de uma passagem de ônibus na
+época. Importante notar que \textbf{não houve remuneração nos finais de semana},
+permitindo observar o comportamento de uso do aplicativo sem o incentivo
+financeiro. Ao longo das quatro semanas do piloto, os participantes tiveram suas
+coortes alternadas semanalmente, conforme desenho conduzido pelos economistas,
+de modo a permitir a avaliação causal do efeito dos diferentes níveis de
+incentivo.
+
+% Depois ver se é necessário essa seção
+%\textbf{Atores e processos.} Atores principais: participantes, equipe de
+%operação e suporte, equipe de pesquisa, parceiros institucionais e equipe de
+%desenvolvimento. Processos-chave: inscrição e triagem; amostragem; registro de
+%viagens; validação de elegibilidade; cálculo de créditos; tratamento de
+%\emph{contestações}; reporting e análise. Informações adicionais e materiais
+%técnicos estão na wiki do aplicativo\citep{bikesp:wiki}.
 
 \section{Objetivos do trabalho}
 Este TCC tem por objetivo desenvolver um \textbf{painel administrativo} capaz

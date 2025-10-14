@@ -1,0 +1,40 @@
+flowchart TB
+ subgraph subGraph0[" "]
+        U["Usuários"]
+        A["App Android"]
+  end
+ subgraph subGraph1[" "]
+        LS["Formulário<br>LimeSurvey"]
+        N["Máquina Virtual<br>NuvemUSP"]
+        PG["Banco de Dados<br>PostgreSQL"]
+        AM["Máquina Virtual<br>Amazon"]
+        FL["Back-end Flask"]
+  end
+ subgraph subGraph2["Serviços Externos"]
+        FB["Google<br>Firebase"]
+        SP["SPTrans"]
+        GEO["APIs de<br>Geolocalização"]
+  end
+    LS --> N
+    N <--> P["PAINEL DE<br>ADMINISTRAÇÃO"]
+    P <--> AM & U & FB & SP
+    PG <--> AM
+    FL <--> AM & FB & GEO
+    U --> A
+    A <--> FL
+    P --> n2["Equipe de<br>Suporte"]
+
+    n2@{ shape: rect}
+    style U fill:#CCFFCC,stroke:#333,stroke-width:1px
+    style A fill:#CCFFCC,stroke:#333,stroke-width:1px
+    style LS fill:#CCFFCC,stroke:#333,stroke-width:1px
+    style N fill:#CCFFFF,stroke:#333,stroke-width:1px
+    style PG fill:#CCFFFF,stroke:#333,stroke-width:1px
+    style AM fill:#CCFFFF,stroke:#333,stroke-width:1px
+    style FL fill:#CCFFFF,stroke:#333,stroke-width:1px
+    style FB fill:#FFDDCC,stroke:#333,stroke-width:1px
+    style SP fill:#FFDDCC,stroke:#333,stroke-width:1px
+    style GEO fill:#FFDDCC,stroke:#333,stroke-width:1px
+    style P fill:#CCE5FF,stroke:#333,stroke-width:2px
+    style n2 fill:#FFDDCC,stroke:#333,stroke-width:1px
+

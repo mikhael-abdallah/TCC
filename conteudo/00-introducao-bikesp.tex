@@ -9,27 +9,52 @@
 \chapter**{Introdução}
 \label{cap:introducao-bikesp}
 
-Este Trabalho de Conclusão de Curso documenta minha participação no
-desenvolvimento de um painel administrativo para o programa Bike~SP, uma
-iniciativa da Prefeitura de São Paulo em parceria com a USP que investiga o
-uso de incentivos financeiros para promoção do ciclismo urbano. O projeto
-prevê um piloto controlado com centenas de participantes, combinando técnicas
-de ciência de dados e avaliação causal com uma perspectiva de justiça de dados
-de mobilidade\citep{faria2023:bikespCaseStudy, interscity:pilotoBikeSP}.
+A bicicleta é um meio de transporte sustentável que pode contribuir para a
+melhoria da qualidade de vida urbana em diversas dimensões, como redução da
+poluição ambiental, melhora da saúde pública e diminuição dos custos sociais e
+individuais do transporte. Nesse sentido, políticas públicas que incentivam o
+uso da bicicleta são cada vez mais importantes para o planejamento de transporte
+urbano\citep{sheller2018, jeekel2017}. Em São Paulo, maior cidade do Brasil com
+mais de 12 milhões de habitantes e 24 milhões de viagens diárias, apenas 0,9\%
+de todas as viagens eram feitas por bicicleta em 2017\citep{metro2017}.
+Recentemente, a Prefeitura estabeleceu a meta de elevar a participação modal do
+ciclismo para 3,2\% até 2028\citep{saopauloCityHall2022}.
 
-O Bike~SP foi instituído por legislação municipal com o objetivo de conceder
-créditos de mobilidade a cidadãos que realizam deslocamentos de trabalho ou
-estudo utilizando bicicleta. Devido à escassez de precedentes de larga
-escala e de evidências científicas em contextos semelhantes ao de São Paulo,
-um estudo piloto vem sendo desenhado e conduzido por pesquisadores do IME-USP
-e instituições parceiras, com documentação adicional no âmbito da disciplina
-MAC0499\citep{analima:mac0499}.
+O programa Bike~SP tem origem na \textbf{Lei Municipal 16.547/2016}
+\citep{municipalLegislation2016}, que prevê a concessão de créditos de
+mobilidade a cidadãos que realizam deslocamentos utilizando bicicleta. A lei
+especifica que esses créditos serão dados aos usuários registrados no sistema
+\emph{Bilhete Único}, podendo ser utilizados para pagamento de ônibus, metrô e
+trem. No entanto, a implementação foi adiada devido à ausência de decreto
+regulamentar que especifique aspectos práticos da política, como critérios de
+elegibilidade, valor do benefício e método de medição das distâncias percorridas.
+
+Incentivos financeiros para ciclistas já existem em alguns países, principalmente
+na Europa, como na Holanda (subsídio de \texteuro{}0,25 por quilômetro) e na
+Bélgica\citep{tennant2022, brusselsTimes2022}. Entretanto, devido à escassez de
+implementações anteriores em contextos semelhantes ao de São Paulo e de
+evidências científicas que orientem seu desenho e execução, decidiu-se fornecer
+suporte científico à política pública através da implementação de um projeto
+piloto\citep{faria2023:bikespCaseStudy, pearson2020}.
+
+A partir de 2023, o IME-USP iniciou o projeto de pesquisa em parceria com o
+grupo INCT InterSCity, com o objetivo de elaborar um experimento controlado
+capaz de gerar evidências empíricas para guiar a regulamentação efetiva desta
+lei. Este estudo piloto foi desenhado e conduzido por pesquisadores do IME-USP
+e instituições parceiras, incluindo especialistas em mobilidade cicloviária e a
+\emph{Eindhoven University of Technology} (TU/e).
+
+O presente trabalho, desenvolvido em 2025, buscou viabilizar a execução do
+experimento através de uma equipe de desenvolvimento e
+suporte composta por 6 pessoas do grupo de pesquisa, projetando e implementando
+uma versão do sistema com funcionalidades estendidas para atender às
+demandas operacionais e de pesquisa do piloto.
 
 O painel administrativo desenvolvido neste TCC tem como propósito apoiar a
 operação do piloto e sua avaliação, oferecendo: (i) visibilidade sobre
 cadastros, elegibilidade e amostras; (ii) acompanhamento de viagens registradas
 no aplicativo móvel; (iii) cálculo e auditoria de créditos; e (iv) insumos para
-monitoramento e análise. Ao longo do texto, são descritos contexto, requisitos, 
+monitoramento e análise de dados. Ao longo do texto, são descritos contexto, requisitos, 
 implementação do projeto e resultados alcançados.
 
 

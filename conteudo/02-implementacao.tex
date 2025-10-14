@@ -5,25 +5,44 @@
 \label{cap:implementacao}
 
 \section{Arquitetura de software}
-O painel adota arquitetura web modular e integra-se a serviços de autenticação,
-cadastro de participantes, registros de viagens, contestações e processamento de
-créditos/pagamentos. As principais conexões externas incluem o \textit{App Mobile}
-dos participantes, o sistema de pagamentos (por exemplo, SPTrans), a equipe de
-economistas, suporte/atendimento e coordenação.
+O sistema BikeSP é composto por múltiplos componentes distribuídos em diferentes
+infraestruturas, conforme ilustrado na Figura~\ref{fig:arquitetura}. O
+\textbf{Painel Administrativo} atua como componente central de orquestração,
+integrando-se aos demais módulos do sistema.
+
+\textbf{Inscrição de participantes.} Os usuários realizavam inscrição através do
+\textbf{Formulário LimeSurvey}, hospedado em uma máquina virtual NuvemUSP. Após
+o período de inscrições, um administrador utiliza o painel para executar um
+\emph{script} que extraía os dados dos candidatos do LimeSurvey e os inseria no
+banco de dados PostgreSQL do BikeSP, já filtrando os candidatos selecionados pela 
+equipe de pesquisa pelos critérios de elegibilidade e balanceamento experimental definidos.
+
+\textbf{Infraestrutura principal.} A máquina virtual Amazon hospeda o
+\textbf{Banco de Dados PostgreSQL} e o \textbf{Back-end Flask}, que implementa a
+lógica de negócio do sistema (validação de viagens, cálculo de créditos,
+gerenciamento de usuários e coortes). O painel comunica-se com o back-end via
+APIs REST para consultar e manipular dados.
+
+\textbf{Aplicativo móvel.} O \textbf{App Android} é utilizado pelos participantes
+para registrar viagens de bicicleta. As viagens são enviadas ao back-end, que as
+valida e processa. O painel permite que administradores visualizem, auditem e, se
+necessário, corrijam dados de viagens (por exemplo, erros de geolocalização).
+
+\textbf{Serviços externos.} O sistema integra-se com: (i) \textbf{Google
+Firebase} para autenticação e notificações push; (ii) \textbf{APIs de
+Geolocalização} (TomTom e Nominatim) para validação e correção de coordenadas
+GPS; e (iii) \textbf{Loja Virtual SPTrans} para processamento de pagamentos dos
+créditos acumulados pelos participantes.
+
+\textbf{Equipe de suporte.} O painel é acessado pela equipe de suporte e
+operação, permitindo gestão de cadastros, atribuição de coortes, criação de
+bônus, aprovação de contestações e geração de relatórios para a equipe de
+economistas.
 
 \begin{figure}[H]
   \centering
-  % Insira o arquivo em figuras/ com resolução adequada para impressão
-  \IfFileExists{figuras/arquitetura.pdf}{%
-    \includegraphics[width=.92\textwidth]{figuras/arquitetura.pdf}%
-  }{%
-    \IfFileExists{figuras/arquitetura.png}{%
-      \includegraphics[width=.92\textwidth]{figuras/arquitetura.png}%
-    }{%
-      \fbox{\parbox{.9\textwidth}{Diagrama de arquitetura (placeholder). Inserir em figuras/arquitetura.pdf/png mostrando: Painel no centro; integrações com App Mobile, backend de dados, módulo de pagamentos (SPTrans), economistas, suporte e coordenação.}}%
-    }%
-  }%
-  \caption{Arquitetura de alto nível: módulos e integrações do painel.}
+  \includegraphics[width=0.95\textwidth]{diagrama_tcc.png}
+  \caption{Diagrama simplificado dos componentes do sistema BikeSP.}
   \label{fig:arquitetura}
 \end{figure}
 
@@ -37,83 +56,36 @@ o pré-teste, o período de inscrições, a preparação de julho e a execução
 piloto.
 
 \section{Abas do painel e uso no piloto}
-As figuras desta seção devem ser incluídas com resolução adequada para
-impressão; além de legendas, descreva no texto o contexto e o que observar em
-cada captura.
+
+\subsection{Inserção de usuários}
+\input{conteudo/02-insercao-usuarios}
 
 \subsection{Usuários}
-Explicar fluxo de inscrição no LimeSurvey e script que buscava os usuários no
-LimeSurvey e insere os usuários no banco de dados do app.
-
-Após a inserção, o usuário pode ser visualizado na tela de usuários.
-A tela apresenta uma tabela os dados principais do usuário, como id, nome, email,
-cpf, bilhete único e se tem senha cadastrada.
-O id do usuário era usado em processos importantes, como na gestão de bônus e coortes.
-Nessa tabela, é possível buscar usuários por nome ou id, ordenar por coluna,
-paginar e ajustar a densidade/quantidade de linhas por página.
+\input{conteudo/02-usuarios}
 
 
 \subsection{Coortes}
-Explicar o que é uma coorte no contexto do BikeSP.
-Coortes representam grupos experimentais/remuneração. Foi disponibilizada uma
-página para criar e atualizar coortes e acompanhar um quadro sintético (ID,
-remuneração e quantidade de membros). Além disso, também tem uma busca por participantes
-das coortes, que inclui filtros por coorte e métricas de viagens, apoiando decisões
-operacionais e o monitoramento do andamento do piloto.
-
-É possível fazer uma atribuição em lote para configurar as coortes de múltiplos usuários
-simultaneamente, explicar como essa função foi usada.
-
-E também é possível exportar uma planilha com os usuários e suas coortes,
-para facilitar tarefas administrativas recorrentes.
+\input{conteudo/02-coortes}
 
 
 \subsection{Bônus}
-Explicar o que é o bônus no contexto do BikeSP.
-Gestão de bônus para usuários. Criação de bônus, ativação/desativação de bônus,
-Atribuição de bônus aos participantes. 
-
-A busca de bônus foi padronizada para apresentar datas e estados (ativo/inativo)
-de forma consistente. Também passou a ser possível alterar o estado do bônus
-diretamente na listagem, favorecendo a manutenção rápida das regras durante a
-execução do piloto.
+\input{conteudo/02-bonus}
 
 
 \subsection{Remuneração}
-Explicar como era feito o processo de remuneração dos participantes.
-O painel gera um CSV com os dados que deviam ser enviados à SPTrans para o pagamento
-das viagens elegíveis.
-
-O painel recebe um upload dos pagamentos realizados pela SPTrans, e debita os valores
-do aplicativo do participante.
+\input{conteudo/02-remuneracao}
 
 
 \subsection{Contestações}
-Explicar o que são contestações e como podiam acontecer.
-O painel permitia a visualização das contestações e o processo de aprovação/rejeição
-das contestações. Nela, o administrador podia ver a viagem contestada, o motivo da
-contestação, e decidir se a contestação era válida ou não.
+\input{conteudo/02-contestacoes}
 
 
 \subsection{Viagens}
-A tela de viagens exibia uma tabela com os dados principais da viagem, como id,
-id do participante, data, local de início e fim, distância, remuneração e status.
-A tabela apresentava busca por usuário, paginação e ajuste de densidade/quantidade 
-de linhas por página. 
-
-Ao clicar na viagem, o mapa contendo o trajeto da viagem era exibido.
-
-Além disso, era possível exportar todas as viagens para CSV.
+\input{conteudo/02-viagens}
 
 \subsection{Notificações}
-Explicar o que são notificações e como podem ser enviadas.
-Notificação por email e notificações push.
-Podem ser direcionadas para um ou mais participantes, para participantes de uma coorte 
-ou para todos os participantes.
-As notificações também eram enviadas em cópia oculta para o email do administrador.
+\input{conteudo/02-notificacoes}
 
 \subsection{Localizações}
-Explicar o cadastro dos locais no LimeSurvey e como os locais deveriam ser usados
-pelo usuário no app.
-Gerenciamento de localizações do usuário, permitindo que ele alterasse suas localizações.
+\input{conteudo/02-localizacoes}
 
