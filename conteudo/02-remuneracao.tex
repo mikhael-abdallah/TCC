@@ -4,7 +4,7 @@
 % Conteúdo da subseção sobre Remuneração
 % Este arquivo é importado em 02-implementacao.tex
 
-\textbf{Contexto da remuneração no piloto.} A Lei Municipal 16.547/2016 estabeleceu
+A Lei Municipal 16.547/2016 estabeleceu
 que o pagamento aos ciclistas do programa BikeSP seria realizado através de créditos
 de transporte público, inseridos diretamente nos cartões Bilhete Único dos
 participantes. Esta escolha reflete a intenção do governo municipal de integrar a
@@ -26,7 +26,7 @@ diferenciada por perfil de participante durante o piloto, pois um dos objetivos 
 experimento era justamente compreender como o impacto da remuneração varia
 segundo diferentes perfis demográficos e socioeconômicos.
 
-\textbf{Fluxo completo de pagamento.} O sistema de remuneração implementado no
+O sistema de remuneração implementado no
 painel administrativo gerencia três estados distintos do dinheiro: (i)
 \texttt{aguardandoEnvio} --- valores de viagens aprovadas, bônus concedidos e
 contestações deferidas que ainda não foram enviados à SPTrans; (ii)
@@ -37,7 +37,7 @@ participantes. Esta separação em estados permite rastreabilidade completa do f
 financeiro e reconciliação precisa entre solicitações, confirmações e valores
 efetivamente pagos.
 
-\textbf{Geração de lista de créditos a pagar.} A funcionalidade de geração de CSV
+A funcionalidade de geração de CSV
 para pagamento compila todos os valores em estado \texttt{aguardandoEnvio} de
 participantes com Bilhete Único ativo. O arquivo gerado segue formato específico
 exigido pela SPTrans: duas colunas delimitadas por ponto e vírgula (número do
@@ -45,16 +45,16 @@ Bilhete Único e valor), sem cabeçalho. O nome do arquivo inclui data e hora co
 \texttt{pagamentos05-10-2024-14-30-25.csv}) para garantir unicidade e
 rastreabilidade. Ao gerar o CSV, o sistema automaticamente move os valores de
 \texttt{aguardandoEnvio} para \texttt{aguardandoResposta}, evitando duplicação em
-envios subsequentes. Esta operação é atômica e registrada em log para auditoria.
+envios subsequentes. Esta operação é atômica e registrada em log para auditoria. A Figura~\ref{fig:remuneracao_gerar_csv_form_creditos} mostra a interface de geração (dados fictícios para fins ilustrativos).
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{figuras/remuneracao_creditos.png}
-    \caption{Interface de geração de lista de créditos a pagar via SPTrans.}
+    \caption{Interface de geração de lista de créditos a pagar via SPTrans (dados fictícios).}
     \label{fig:remuneracao_gerar_csv_form_creditos}
   \end{figure}
 
-\textbf{Envio e processamento pela SPTrans.} O arquivo CSV gerado é enviado
+O arquivo CSV gerado é enviado
 manualmente à SPTrans. A SPTrans credita os valores nos cartões Bilhete
 Único dos participantes e retorna um arquivo CSV de comprovação contendo os bilhetes
 efetivamente creditados e os valores pagos. Este processo manual, embora não
@@ -64,7 +64,7 @@ riscos de erros sistêmicos em larga escala.
 
 
 
-\textbf{Upload e confirmação de pagamentos.} Ao receber o comprovante da SPTrans,
+Ao receber o comprovante da SPTrans,
 o administrador realiza upload do arquivo CSV no painel. O sistema executa validação
 rigorosa linha por linha: verifica formato (exatas duas colunas), existência do
 Bilhete Único no banco de dados, e validade numérica do valor. Qualquer erro
@@ -73,27 +73,27 @@ parciais que poderiam gerar inconsistências. Apenas quando todas as linhas são
 validadas com sucesso, o sistema processa a confirmação: move valores de
 ``aguardando resposta'' para ``concedido'', registra o histórico de pagamento como confirmado, e armazena a data e valor de cada operação. Mensagens específicas de erro (``Arquivo com
 mais de duas colunas'', ``Formato incorreto de valor'', ``Bilhete não encontrado'')
-facilitam correção rápida de problemas antes de reprocessar.
+facilitam correção rápida de problemas antes de reprocessar. A Figura~\ref{fig:remuneracao_gerar_csv_form_processados} ilustra a interface de upload (dados fictícios para fins ilustrativos).
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{figuras/remuneracao_processados.png}
-    \caption{Interface de upload de comprovante de pagamentos realizados pela SPTrans.}
+    \caption{Interface de upload de comprovante de pagamentos realizados pela SPTrans (dados fictícios).}
     \label{fig:remuneracao_gerar_csv_form_processados}
   \end{figure}
-\textbf{Estrutura de dados e integridade financeira.} O sistema armazena, para cada Bilhete Único, os três estados de remuneração (concedido, aguardando envio, aguardando resposta) além da identificação do participante e status de ativação do cartão. Mantém também registro imutável de todos os envios de pagamento (identificados por número do bilhete e data), permitindo múltiplos pagamentos ao mesmo participante ao longo do tempo. Restrições do banco de dados garantem que valores sejam sempre não
+O sistema armazena, para cada Bilhete Único, os três estados de remuneração (concedido, aguardando envio, aguardando resposta) além da identificação do participante e status de ativação do cartão. Mantém também registro imutável de todos os envios de pagamento (identificados por número do bilhete e data), permitindo múltiplos pagamentos ao mesmo participante ao longo do tempo. Restrições do banco de dados garantem que valores sejam sempre não
 negativos e que transições de estado sigam apenas fluxos
 válidos. Toda operação financeira é registrada em log incluindo ID do administrador
 responsável, garantindo trilha de auditoria completa e rastreabilidade para
 conformidade com procedimentos do experimento.
 
-\textbf{Monitoramento e indicadores operacionais.} O painel oferece visibilidade
+O painel oferece visibilidade
 sobre valores pendentes de envio, valores aguardando confirmação da SPTrans, e total pago aos participantes. 
 Durante o piloto, estes indicadores foram fundamentais para
 planejamento de fluxo de caixa e comunicação com participantes sobre prazos
 esperados de creditação. 
 
-\textbf{Casos especiais e tratamento de exceções.} O sistema contempla cenários
+O sistema contempla cenários
 atípicos que ocorreram durante operação: (i) pagamentos parciais, quando SPTrans
 credita valor inferior ao solicitado, mantendo diferença pendente de confirmação para reenvio posterior; (ii) bilhetes inválidos ou
 bloqueados, que não aparecem no CSV de retorno da SPTrans e requerem investigação

@@ -9,12 +9,12 @@ representam uma ferramenta complementar de incentivo financeiro aos participante
 independente das remunerações por quilômetro pedalado. Conforme planejado no desenho
 do experimento, os bônus servem a múltiplos propósitos: (i) recompensar a conclusão
 do curso gratuito ``Pedale com Segurança'' oferecido pelo Centro de Treinamento e
-Educação de Trânsito (CETET) da CET; (ii) incentivar o preenchimento dos
+Educação de Trânsito (CETET) da CET, que treinou centenas de participantes do piloto em técnicas de ciclismo seguro no trânsito urbano; (ii) incentivar o preenchimento dos
 questionários qualitativos aplicados em três momentos do piloto, garantindo maior
 taxa de resposta e riqueza de dados; (iii) permitir ajustes administrativos e
 correções pontuais de pagamento quando necessário; e (iv) viabilizar eventuais
 campanhas promocionais temporárias para estimular a participação em momentos
-estratégicos do experimento.
+estratégicos do experimento.\footnote{Uma foto do curso ``Pedale com Segurança'' deveria ser incluída aqui, mostrando participantes do piloto BikeSP durante as atividades de treinamento oferecidas pelo CETET.}
 
 O painel administrativo oferece três
 funcionalidades principais relacionadas a bônus: criação de novos tipos de bônus,
@@ -30,12 +30,12 @@ visíveis/invisíveis oferece grande flexibilidade: bônus inativos não podem s
 concedidos (útil para pausar temporariamente um incentivo), enquanto bônus
 invisíveis, mesmo quando concedidos e gerando remuneração, não aparecem na
 listagem do aplicativo do usuário (útil para ajustes administrativos discretos ou
-correções pontuais).
+correções pontuais). A Figura~\ref{fig:bonus_criar_form} mostra o formulário de criação (dados fictícios para fins ilustrativos).
 
  \begin{figure}[H]
    \centering
    \includegraphics[width=0.95\textwidth]{figuras/criar_bonus.PNG}
-   \caption{Formulário de criação de bônus no painel administrativo.}
+   \caption{Formulário de criação de bônus no painel administrativo (dados fictícios).}
    \label{fig:bonus_criar_form}
  \end{figure}
 
@@ -49,16 +49,16 @@ também cria automaticamente uma remuneração correspondente ao valor do bônus
 insere na fila de pagamentos (para posterior transferência aos cartões Bilhete
 Único via Loja Virtual SPTrans). Caso algum usuário não atenda aos critérios, o
 sistema reporta sucesso parcial, detalhando quantos usuários receberam o bônus e
-quais apresentaram erros (por exemplo, ``5 sucesso(s), 2 erro(s): Usuário 101 já
+quais apresentaram erros (por exemplo, ``5 sucessos, 2 erros: Usuário 101 já
 possui este bônus; Usuário 203 não existe''). Esta funcionalidade de concessão em
 lote reduz significativamente o tempo necessário para operações recorrentes, como
 conceder o bônus do curso de segurança para todos os participantes que o
-concluíram em determinada semana.
+concluíram em determinada semana. A Figura~\ref{fig:bonus_atribuir_form} ilustra esta interface (dados fictícios para fins ilustrativos).
 
  \begin{figure}[H]
    \centering
    \includegraphics[width=0.95\textwidth]{figuras/atribuir_bonus.PNG}
-   \caption{Formulário de atribuição de bônus aos participantes.}
+   \caption{Formulário de atribuição de bônus aos participantes (dados fictícios).}
    \label{fig:bonus_atribuir_form}
  \end{figure}
 
@@ -73,12 +73,12 @@ realizadas nem afeta remunerações já geradas; apenas impede novas concessões
 daquele tipo de bônus. Para facilitar a identificação dos IDs de usuários ao
 atribuir bônus, a aba de bônus também oferece uma consulta integrada à tabela de
 usuários, com busca por nome ou ID, ordenação por qualquer coluna e
-paginação configurável da mesma forma que a tela de usuários.
+paginação configurável da mesma forma que a tela de usuários. A Figura~\ref{fig:bonus_listagem_form} mostra a listagem de bônus (dados fictícios para fins ilustrativos).
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{figuras/bonus_listar.PNG}
-    \caption{Listagem de bônus cadastrados com funcionalidades de busca, paginação e ativação/desativação.}
+    \caption{Listagem de bônus cadastrados com funcionalidades de busca, paginação e ativação/desativação (dados fictícios).}
     \label{fig:bonus_listagem_form}
   \end{figure}
  

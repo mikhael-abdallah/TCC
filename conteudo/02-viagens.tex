@@ -8,21 +8,21 @@ Durante os seis meses do piloto BikeSP, foram registradas mais de 29.000 viagens
 
 A tabela de viagens apresenta oito colunas principais: ID da viagem (identificador único), ID do usuário, data da viagem, deslocamento em metros, IDs de origem e destino (referenciando localizações cadastradas), status (aprovada/reprovada), e remuneração calculada em reais. O sistema consulta dados de viagens vinculando informações de pessoas e localizações de origem e destino, utilizando técnicas de paginação eficiente para responsividade. Ordenação padrão por ID decrescente exibe viagens mais recentes primeiro, padrão adequado para monitoramento operacional diário.
 
-O campo de busca permite filtrar viagens por ID de usuário específico (busca exata). Esta funcionalidade atende cenário operacional frequente: participante relata problema com viagem; administrador identifica ID do usuário na tela de participantes; busca todas viagens daquele usuário; localiza a viagem em questão (geralmente reconhecível por data/horário ou trajeto).
+O campo de busca permite filtrar viagens por ID de usuário específico (busca exata). Esta funcionalidade atende cenário operacional frequente: participante relata problema com viagem; administrador identifica ID do usuário na tela de participantes; busca todas viagens daquele usuário; localiza a viagem em questão (geralmente reconhecível por data/horário ou trajeto). A Figura~\ref{fig:viagens_listar} mostra a interface de listagem (dados fictícios para fins ilustrativos).
 
  \begin{figure}[H]
    \centering
    \includegraphics[width=0.95\textwidth]{figuras/viagens_listar.png}
-   \caption{Interface de listagem de viagens com funcionalidades de busca, ordenação e paginação.}
+   \caption{Interface de listagem de viagens com funcionalidades de busca, ordenação e paginação (dados fictícios).}
    \label{fig:viagens_listar}
  \end{figure}
 
-Ao clicar em qualquer linha da tabela, a interface renderiza mapa interativo (biblioteca Leaflet.js com tiles OpenStreetMap) exibindo trajeto completo da viagem abaixo da tabela. O mapa plota marcadores para cada ponto GPS coletado pelo aplicativo durante a viagem, conectados por linha azul na ordem temporal. Popups nos marcadores exibem timestamp de cada ponto. Zoom automático enquadra toda rota, e controles padrão (zoom, pan, scroll) permitem inspeção detalhada. Esta funcionalidade revelou-se crítica para validação de viagens contestadas: administradores visualizavam se trajeto realmente conectava origem e destino declarados, se passava por vias adequadas para ciclismo, e se não apresentava anomalias (ex: teletransportes indicando GPS incorreto).
+Ao clicar em qualquer linha da tabela, a interface renderiza mapa interativo (biblioteca Leaflet.js com tiles OpenStreetMap) exibindo trajeto completo da viagem abaixo da tabela. O mapa plota marcadores para cada ponto GPS coletado pelo aplicativo durante a viagem, conectados por linha azul na ordem temporal. Popups nos marcadores exibem timestamp de cada ponto. Zoom automático enquadra toda rota, e controles padrão (zoom, pan, scroll) permitem inspeção detalhada. Esta funcionalidade revelou-se crítica para validação de viagens contestadas: administradores visualizavam se trajeto realmente conectava origem e destino declarados, se passava por vias adequadas para ciclismo, e se não apresentava anomalias (ex: teletransportes indicando GPS incorreto). A Figura~\ref{fig:mapa_contestacao} ilustra a visualização de um trajeto (dados fictícios para fins ilustrativos).
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{figuras/mapa_contestacao.PNG}
-    \caption{Visualização de trajeto de viagem fictícia com origem no IME e destino na estação Butantã no mapa interativo com marcadores de pontos GPS.}
+    \caption{Visualização de trajeto de viagem no mapa interativo com marcadores de pontos GPS (dados fictícios).}
     \label{fig:mapa_contestacao}
   \end{figure}
 

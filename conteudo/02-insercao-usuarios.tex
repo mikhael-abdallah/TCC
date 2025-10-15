@@ -8,12 +8,12 @@ O processo de recrutamento de participantes para o piloto BikeSP iniciou-se com 
 
 A funcionalidade de inserção em lote, acessível via botão ``Inserir Usuários!'' no painel administrativo, executa script que: (i) conecta à API do LimeSurvey e baixa todas respostas ainda não processadas; (ii) itera sobre cada resposta aplicando validações (CPF válido via algoritmo de verificação de dígitos, email em formato correto e único no sistema, Bilhete Único com 15 dígitos numéricos, senha com mínimo de caracteres configurável); (iii) criptografa a senha antes de armazenar (segurança crítica); (iv) geocodifica endereços textuais chamando APIs externas (TomTom, Google Maps, Nominatim OSM) para converter em coordenadas GPS; (v) armazena dados cadastrais da pessoa, vinculação do cartão Bilhete Único com status ativo, e coordenadas de casa e trabalho; (vi) atribui participante a coorte inicial (pode ser randomizado ou seguir configuração padrão); e (vii) registra logs detalhados de sucesso/falha para cada usuário processado.
 
-Execução ocorre em thread separada (processamento assíncrono) para não bloquear interface administrativa durante operação (geocodificação via APIs externas é gargalo principal). Botão fica desabilitado durante processamento, prevenindo cliques duplos que iniciariam múltiplas execuções simultâneas. Mensagem inicial ``Usuários novos estão sendo inseridos!'' confirma início; mensagem final reporta quantidade inserida (``X usuários inseridos com sucesso'') ou erros encontrados.
+Execução ocorre em thread separada (processamento assíncrono) para não bloquear interface administrativa durante operação (geocodificação via APIs externas é gargalo principal). Botão fica desabilitado durante processamento, prevenindo cliques duplos que iniciariam múltiplas execuções simultâneas. Mensagem inicial ``Usuários novos estão sendo inseridos!'' confirma início; mensagem final reporta quantidade inserida (``X usuários inseridos com sucesso'') ou erros encontrados. A Figura~\ref{fig:insercao_usuarios} mostra a interface desta funcionalidade (dados fictícios para fins ilustrativos).
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.95\textwidth]{figuras/inserir_usuarios.PNG}
-  \caption{Interface de inserção de usuários no painel administrativo, com botão para executar o script de importação do LimeSurvey.}
+  \caption{Interface de inserção de usuários no painel administrativo, com botão para executar o script de importação do LimeSurvey (dados fictícios).}
   \label{fig:insercao_usuarios}
 \end{figure}
 
