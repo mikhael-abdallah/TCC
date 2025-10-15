@@ -1,10 +1,13 @@
 %!TeX root=../tese.tex
 %("dica" para o editor de texto: este arquivo é parte de um documento maior)
 
-\chapter{Contexto do Bike~SP e painel administrativo}
+\chapter{O Piloto BikeSP e seu painel administrativo}
 \label{cap:contexto-painel}
 
+Este capítulo apresenta o contexto do programa Bike~SP e do projeto piloto que foi desenvolvido para gerar evidências científicas para sua regulamentação. A Seção~\ref{sec:programa-bikesp} descreve o programa Bike~SP e sua origem na Lei Municipal 16.547/2016. A Seção~\ref{sec:piloto-bikesp} detalha o piloto experimental, incluindo cronograma, processo de inscrições e o desenho experimental com três coortes. Por fim, a Seção~\ref{sec:objetivos-trabalho} apresenta os objetivos específicos deste trabalho de conclusão de curso.
+
 \section{Programa Bike~SP}
+\label{sec:programa-bikesp}
 O Bike~SP é um programa público que visa incentivar deslocamentos funcionais por
 bicicleta por meio de créditos de mobilidade. Já o \textit{piloto} é uma etapa
 experimental, delimitada no tempo e no escopo, concebida para testar variáveis
@@ -36,19 +39,27 @@ beneficiando especialmente populações de baixa renda.
 Dessa forma, o programa promove não apenas o aumento da participação modal do
 ciclismo, mas também a equidade de mobilidade\citep{vanoutrive2020, jeekel2017}.
 
-\section{Piloto: cronograma, inscrições, seleção, atores e processos}
-\textbf{Cronograma.} \begin{itemize}
-  \item \textbf{Abril--Maio}: pré-teste com participantes beta; o painel foi
-        utilizado desde o início para acompanhar registros e validar fluxos.
-  \item \textbf{Três meses de inscrições}: processo conduzido via LimeSurvey;
-        ao final, foram recebidas \textbf{cerca de 3000 candidaturas}.
-  \item \textbf{Julho}: uso ampliado do aplicativo; a equipe operou o painel
-        para monitorar o uso e oferecer suporte a usuários
-        com dificuldades.
-  \item \textbf{Agosto}: execução do piloto principal em \textbf{4 semanas}.
-\end{itemize}
+\section{Piloto do BikeSP}
+\label{sec:piloto-bikesp}
+O piloto do BikeSP foi executado entre abril e agosto, envolvendo diferentes fases desde o pré-teste até a execução principal do experimento, com participação de 1217 ciclistas selecionados. A seguir, descrevemos o cronograma completo, o processo de inscrições e seleção, e o desenho experimental com suas três coortes.
 
-\textbf{Inscrições e seleção.} O formulário de inscrição (LimeSurvey) permitiu
+\textbf{Cronograma.} \begin{itemize}
+      \item \textbf{Abril--Maio}: pré-teste com participantes beta; o 
+      painel foi
+            utilizado desde o início para acompanhar registros e validar 
+            fluxos.
+      \item \textbf{Três meses de inscrições}: processo conduzido via 
+      LimeSurvey;
+            ao final, foram recebidas \textbf{cerca de 3000 candidaturas}.
+      \item \textbf{Julho}: uso ampliado do aplicativo; a equipe operou o 
+      painel
+            para monitorar o uso e oferecer suporte a usuários
+            com dificuldades.
+      \item \textbf{Agosto}: execução do piloto principal em \textbf{4 
+      semanas}.
+    \end{itemize}
+
+O formulário de inscrição criado na plataforma LimeSurvey permitiu
 coleta padronizada de dados demográficos e de contexto de mobilidade. Com o
 apoio de aparições na mídia, foram obtidas aproximadamente \textbf{3~mil
 inscrições}. A seleção final considerou o desenho experimental e o balanceamento
@@ -57,8 +68,7 @@ participação no piloto. Para evitar viés, foram excluídos cicloativistas
 reconhecidos, priorizando usuários representativos do público-alvo da política
 pública.
 
-\textbf{Desenho experimental e coortes.} O experimento foi estruturado com base
-em \textbf{três coortes} (grupos experimentais) com diferentes níveis de
+O experimento foi estruturado com base em \textbf{três coortes}, que são grupos experimentais com diferentes níveis de
 remuneração, conforme planejado pela equipe de economistas:
 \begin{itemize}
   \item \textbf{Coorte 1 (controle)}: sem remuneração por viagens;
@@ -85,7 +95,8 @@ incentivo.
 %técnicos estão na wiki do aplicativo\citep{bikesp:wiki}.
 
 \section{Objetivos do trabalho}
-Este TCC tem por objetivo desenvolver um \textbf{painel administrativo} capaz
+\label{sec:objetivos-trabalho}
+Este trabalho teve por objetivo desenvolver um \textbf{painel administrativo} capaz
 de dar suporte efetivo aos processos fundamentais do programa durante o piloto,
 atuando como ferramenta central de operação e governança. Em alto nível, o
 painel deve oferecer: (i) visibilidade sobre cadastros, elegibilidade e
@@ -93,5 +104,7 @@ amostras; (ii) acompanhamento de viagens registradas no aplicativo; (iii)
 cálculo de créditos com trilhas de auditoria e apoio a pagamentos; (iv)
 tratamento de contestações; e (v) exportações e insumos para monitoramento e
 análise.
+
+O próximo capítulo apresenta detalhadamente a implementação do painel administrativo, descrevendo a arquitetura de software do sistema BikeSP e cada uma das funcionalidades desenvolvidas para atender aos objetivos aqui descritos.
 
 

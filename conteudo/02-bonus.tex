@@ -4,7 +4,7 @@
 % Conteúdo da subseção sobre Bônus
 % Este arquivo é importado em 02-implementacao.tex
 
-\textbf{Contexto e propósito dos bônus.} No contexto do piloto BikeSP, os bônus
+No contexto do piloto BikeSP, os bônus
 representam uma ferramenta complementar de incentivo financeiro aos participantes,
 independente das remunerações por quilômetro pedalado. Conforme planejado no desenho
 do experimento, os bônus servem a múltiplos propósitos: (i) recompensar a conclusão
@@ -16,12 +16,12 @@ correções pontuais de pagamento quando necessário; e (iv) viabilizar eventuai
 campanhas promocionais temporárias para estimular a participação em momentos
 estratégicos do experimento.
 
-\textbf{Implementação técnica.} O painel administrativo oferece três
+O painel administrativo oferece três
 funcionalidades principais relacionadas a bônus: criação de novos tipos de bônus,
 atribuição de bônus a usuários, e visualização e gerenciamento dos bônus
 cadastrados. A arquitetura do sistema foi projetada para oferecer flexibilidade e controle sobre os incentivos.
 
-\textbf{Criação de bônus.} Administradores podem cadastrar novos tipos de bônus
+Os administradores podem cadastrar novos tipos de bônus
 informando nome único (identificador), valor em reais, descrição textual, período
 de validade (datas de início e fim, opcionais), e dois flags de controle: se o
 bônus deve ser ativado automaticamente após criação, e se será visível aos
@@ -39,7 +39,7 @@ correções pontuais).
    \label{fig:bonus_criar_form}
  \end{figure}
 
-\textbf{Atribuição de bônus.} Para conceder um bônus a participantes, o
+Para conceder um bônus a participantes, o
 administrador informa os IDs dos usuários (separados por vírgula) e seleciona o
 bônus desejado. O sistema valida diversas condições antes de processar a
 concessão: o bônus deve estar ativo, não pode ter expirado (data de término não
@@ -62,7 +62,7 @@ concluíram em determinada semana.
    \label{fig:bonus_atribuir_form}
  \end{figure}
 
-\textbf{Listagem e gerenciamento.} A tela de listagem exibe todos os bônus
+A tela de listagem exibe todos os bônus
 cadastrados em formato tabular, apresentando ID, nome, valor, status de ativação,
 visibilidade, descrição, período de validade e ações disponíveis. A interface
 oferece busca por nome e paginação (5 itens por página). Cada linha da tabela
@@ -83,14 +83,14 @@ paginação configurável da mesma forma que a tela de usuários.
   \end{figure}
  
 
-\textbf{Integração com o aplicativo móvel.} O aplicativo Android dos participantes
+O aplicativo Android dos participantes
 consome a API \texttt{POST /api/exibeBonus/} para listar os bônus concedidos ao
 usuário autenticado. A API retorna apenas bônus marcados como visíveis, garantindo que ajustes administrativos invisíveis não
 apareçam para os usuários finais. Esta separação entre visibilidade e concessão
 oferece aos gestores do piloto a flexibilidade de realizar correções financeiras
 sem necessariamente comunicá-las explicitamente aos participantes.
 
-\textbf{Uso operacional no piloto.} Durante a execução do piloto, a
+Durante a execução do piloto, a
 funcionalidade de bônus mostrou-se fundamental para diversos cenários operacionais:
 concessão em lote do bônus do curso de segurança para centenas de participantes que
 o concluíram simultaneamente; distribuição dos bônus dos questionários ao final de

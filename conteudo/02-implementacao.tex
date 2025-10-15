@@ -4,37 +4,39 @@
 \chapter{O painel administrativo}
 \label{cap:implementacao}
 
+Este capítulo descreve a implementação do painel administrativo desenvolvido para apoiar o piloto BikeSP. A Seção~\ref{sec:arquitetura} apresenta a arquitetura de software do sistema completo, mostrando como o painel se integra aos demais componentes. A Seção~\ref{sec:processo-desenvolvimento} descreve o processo de desenvolvimento adotado pela equipe. A Seção~\ref{sec:abas-painel} detalha cada uma das funcionalidades implementadas nas diferentes abas do painel, incluindo inserção de usuários, gerenciamento de coortes, bônus, remuneração, contestações, viagens, notificações e localizações.
+
 \section{Arquitetura de software}
+\label{sec:arquitetura}
 O sistema BikeSP é composto por múltiplos componentes distribuídos em diferentes
 infraestruturas, conforme ilustrado na Figura~\ref{fig:arquitetura}. O
 \textbf{Painel Administrativo} atua como componente central de orquestração,
 integrando-se aos demais módulos do sistema.
 
-\textbf{Inscrição de participantes.} Os usuários realizavam inscrição através do
-\textbf{Formulário LimeSurvey}, hospedado em uma máquina virtual NuvemUSP. Após
+Os usuários realizavam inscrição através do \textbf{Formulário LimeSurvey}, hospedado em uma máquina virtual NuvemUSP. Após
 o período de inscrições, um administrador utiliza o painel para executar um
 \emph{script} que extraía os dados dos candidatos do LimeSurvey e os inseria no
 banco de dados PostgreSQL do BikeSP, já filtrando os candidatos selecionados pela 
 equipe de pesquisa pelos critérios de elegibilidade e balanceamento experimental definidos.
 
-\textbf{Infraestrutura principal.} A máquina virtual Amazon hospeda o
+A máquina virtual Amazon hospeda o
 \textbf{Banco de Dados PostgreSQL} e o \textbf{Back-end Flask}, que implementa a
 lógica de negócio do sistema (validação de viagens, cálculo de créditos,
 gerenciamento de usuários e coortes). O painel comunica-se com o back-end via
 APIs REST para consultar e manipular dados.
 
-\textbf{Aplicativo móvel.} O \textbf{App Android} é utilizado pelos participantes
+O \textbf{App Android} é utilizado pelos participantes
 para registrar viagens de bicicleta. As viagens são enviadas ao back-end, que as
 valida e processa. O painel permite que administradores visualizem, auditem e, se
 necessário, corrijam dados de viagens (por exemplo, erros de geolocalização).
 
-\textbf{Serviços externos.} O sistema integra-se com: (i) \textbf{Google
+O sistema integra-se com: (i) \textbf{Google
 Firebase} para autenticação e notificações push; (ii) \textbf{APIs de
 Geolocalização} (TomTom e Nominatim) para validação e correção de coordenadas
 GPS; e (iii) \textbf{Loja Virtual SPTrans} para processamento de pagamentos dos
 créditos acumulados pelos participantes.
 
-\textbf{Equipe de suporte.} O painel é acessado pela equipe de suporte e
+O painel é acessado pela \textbf{equipe de suporte} e
 operação, permitindo gestão de cadastros, atribuição de coortes, criação de
 bônus, aprovação de contestações e geração de relatórios para a equipe de
 economistas.
@@ -47,6 +49,7 @@ economistas.
 \end{figure}
 
 \section{Processo de desenvolvimento}
+\label{sec:processo-desenvolvimento}
 O desenvolvimento envolveu múltiplos stakeholders e ciclos curtos de validação:
 economistas (por exemplo, Thainá), suporte/atendimento (Sávio), coordenação e
 orientação (Fábio e Paulo), além da equipe técnica. As demandas foram
@@ -56,6 +59,7 @@ o pré-teste, o período de inscrições, a preparação de julho e a execução
 piloto.
 
 \section{Abas do painel e uso no piloto}
+\label{sec:abas-painel}
 
 \subsection{Inserção de usuários}
 \input{conteudo/02-insercao-usuarios}
@@ -88,4 +92,6 @@ piloto.
 
 \subsection{Localizações}
 \input{conteudo/02-localizacoes}
+
+Após a descrição detalhada da implementação do painel administrativo e suas funcionalidades, o próximo capítulo apresenta os resultados alcançados durante a execução do piloto, incluindo dados quantitativos de uso e uma avaliação do impacto do sistema nas operações.
 

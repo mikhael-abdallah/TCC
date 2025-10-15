@@ -4,7 +4,7 @@
 % Conteúdo da subseção sobre Usuários
 % Este arquivo é importado em 02-implementacao.tex
 
-\textbf{Contexto e necessidade operacional.} Durante o piloto BikeSP, com
+Durante o piloto BikeSP, com
 aproximadamente 1.200 participantes selecionados dentre 3.000 inscritos, a equipe de
 suporte enfrentava demandas diárias de atendimento. Questões como ``não consigo acessar o aplicativo'', ``minha viagem não foi
 computada'', ``como altero meu endereço cadastrado'' requeriam identificação rápida
@@ -13,13 +13,13 @@ de usuários tornou-se, portanto, o
 ponto de partida no sistema administrativo  para praticamente todas as operações de suporte,
 auditoria e análise.
 
-\textbf{Informações exibidas e estrutura da consulta.} A tela de usuários apresenta
+A tela de usuários apresenta
 tabela com seis colunas principais: ID (identificador único), nome
 completo, email, CPF, número do Bilhete Único, e indicador mostrando se o participante
 completou o cadastro de senha (permitindo acesso ao aplicativo). O sistema consulta dados pessoais vinculados aos cartões Bilhete Único ativos, utilizando técnicas de otimização para obter contagem total sem sobrecarregar o banco de dados --- importante para responsividade em conjuntos de dados com milhares de registros. A coluna ``Tem Senha'' verifica se existe senha cadastrada para aquele usuário, indicador crucial para diagnosticar
 problemas de acesso (usuário inscrito mas sem senha configurada não consegue entrar no aplicativo).
 
-\textbf{Funcionalidade de busca.} O sistema oferece busca unificada por nome
+O sistema oferece busca unificada por nome
 (parcial, \textit{case-insensitive}\@) ou ID exato.
 Por exemplo, buscar ``silva'' retorna ``Silva João'', ``Silvana Costa'', ``Marcos da
 Silva'', enquanto buscar ``123'' retorna apenas o participante com ID exatamente 123.
@@ -37,14 +37,14 @@ específica). Importante notar que a busca não cobre email, CPF ou Bilhete
     \label{fig:usuarios_listagem}
   \end{figure}
 
-\textbf{Ordenação e navegação.} Cada cabeçalho de coluna funciona como botão de
+Cada cabeçalho de coluna funciona como botão de
 ordenação: primeiro clique ordena ascendentemente, segundo clique inverte para
 descendente, com indicadores visuais (setas ↑↓) mostrando coluna ativa e direção.
 Ordenação por nome facilita localização alfabética; por ID permite identificar
 usuários cadastrados cronologicamente (IDs crescentes); por ``Tem Senha'' agrupa
 participantes que completaram vs. não completaram ativação.
 
-\textbf{Paginação configurável.} A interface oferece quatro densidades: 5, 10, 15
+A interface oferece quatro densidades: 5, 10, 15
 (padrão) ou 20 usuários por página, selecionáveis via dropdown. Navegação ocorre por
 botões ``Anterior''/``Próximo'' (desabilitados nos extremos) ou campo de entrada
 direta ``Ir para página X'', validando automaticamente se página solicitada existe.
@@ -54,7 +54,7 @@ flexibilidade mostrou-se útil em diferentes contextos operacionais: densidade b
 (20 itens) para varredura rápida ou busca semi-manual quando termo de busca textual
 não é aplicável.
 
-\textbf{Integração com fluxos de suporte.} A tela de usuários serve como ponto de
+A tela de usuários serve como ponto de
 entrada para diversos fluxos operacionais críticos durante o piloto. \textit{Cenário
 1: Suporte via email} --- participante reporta viagem não creditada; administrador
 busca por nome, identifica ID, navega à tela de viagens filtrando por aquele ID,
@@ -69,7 +69,7 @@ administrador recebe disputa; identifica usuário, obtém ID, acessa tela de
 contestações para processar aprovação/rejeição. Em todos estes cenários, a rapidez
 da busca e clareza da informação apresentada determinam eficiência do atendimento.
 
-\textbf{Uso operacional durante o piloto.} Durante o período de piloto, a
+Durante o período de piloto, a
 tela de usuários foi acessada diariamente pela equipe de suporte.
 A métrica ``Tem Senha'' permitiu identificar participantes que não completaram ativação do aplicativo, 
 orientando campanhas de engajamento. Recursos como ordenação e paginação reduziram significativamente a 
