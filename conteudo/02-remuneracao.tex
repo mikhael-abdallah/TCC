@@ -11,7 +11,7 @@ participantes. Esta escolha reflete a intenção do governo municipal de integra
 bicicleta ao sistema de transporte público, permitindo que os incentivos sejam
 utilizados para deslocamentos multimodais (bicicleta + ônibus/metrô). O modelo de
 remuneração por quilômetro pedalado, adotado também em iniciativas internacionais
-como em Itajaí e na Holanda, visa recompensar a distância economizada ao
+como em Itajaí e na Holanda \citep{itajai2021, tennant2022}, visa recompensar a distância economizada ao
 substituir outros modos de transporte, facilitando análises de impacto em poluição,
 tráfego e saúde pública.
 
@@ -45,12 +45,12 @@ Bilhete Único e valor), sem cabeçalho. O nome do arquivo inclui data e hora co
 \texttt{pagamentos05-10-2024-14-30-25.csv}) para garantir unicidade e
 rastreabilidade. Ao gerar o CSV, o sistema automaticamente move os valores de
 \texttt{aguardandoEnvio} para \texttt{aguardandoResposta}, evitando duplicação em
-envios subsequentes. Esta operação é atômica e registrada em log para auditoria. A Figura~\ref{fig:remuneracao_gerar_csv_form_creditos} mostra a interface de geração (dados fictícios para fins ilustrativos).
+envios subsequentes. Esta operação é atômica e registrada em log para auditoria. A Figura~\ref{fig:remuneracao_gerar_csv_form_creditos} mostra a interface de geração.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{figuras/remuneracao_creditos.png}
-    \caption{Interface de geração de lista de créditos a pagar via SPTrans (dados fictícios).}
+    \caption{Interface de geração de lista de créditos a pagar via SPTrans.}
     \label{fig:remuneracao_gerar_csv_form_creditos}
   \end{figure}
 
@@ -73,12 +73,12 @@ parciais que poderiam gerar inconsistências. Apenas quando todas as linhas são
 validadas com sucesso, o sistema processa a confirmação: move valores de
 ``aguardando resposta'' para ``concedido'', registra o histórico de pagamento como confirmado, e armazena a data e valor de cada operação. Mensagens específicas de erro (``Arquivo com
 mais de duas colunas'', ``Formato incorreto de valor'', ``Bilhete não encontrado'')
-facilitam correção rápida de problemas antes de reprocessar. A Figura~\ref{fig:remuneracao_gerar_csv_form_processados} ilustra a interface de upload (dados fictícios para fins ilustrativos).
+facilitam correção rápida de problemas antes de reprocessar. A Figura~\ref{fig:remuneracao_gerar_csv_form_processados} ilustra a interface de upload.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{figuras/remuneracao_processados.png}
-    \caption{Interface de upload de comprovante de pagamentos realizados pela SPTrans (dados fictícios).}
+    \caption{Interface de upload de comprovante de pagamentos realizados pela SPTrans.}
     \label{fig:remuneracao_gerar_csv_form_processados}
   \end{figure}
 O sistema armazena, para cada Bilhete Único, os três estados de remuneração (concedido, aguardando envio, aguardando resposta) além da identificação do participante e status de ativação do cartão. Mantém também registro imutável de todos os envios de pagamento (identificados por número do bilhete e data), permitindo múltiplos pagamentos ao mesmo participante ao longo do tempo. Restrições do banco de dados garantem que valores sejam sempre não
