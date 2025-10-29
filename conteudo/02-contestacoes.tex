@@ -10,7 +10,7 @@ No aplicativo móvel, participantes cujas viagens foram reprovadas visualizam bo
 
 A tela administrativa de contestações exibe tabela paginada com ID da pessoa, ID da viagem, data, justificativa, e status (Pendente/Sim/Não). Busca textual cobre todos campos, útil para localizar contestações de participante específico (``busca: 123'') ou por palavra-chave na justificativa (``busca: GPS''). Ao clicar em linha, sistema destaca visualmente e carrega detalhes completos abaixo da tabela, incluindo nome do participante, justificativa integral, e mapa interativo renderizando trajeto GPS da viagem contestada. Visualização do trajeto revelou-se decisória: administrador constata se rota realmente conecta origem-destino, se passou por vias cicláveis, ou se apresenta anomalias (ex: linha reta implausível indicando falha de GPS). A visualização dos trajetos será melhor descrita na seção viagens. A Figura~\ref{fig:contestacoes_listagem} mostra a interface de listagem (dados fictícios para fins ilustrativos).
 
- \begin{figure}[H]
+ \begin{figure}[htb]
    \centering
    \includegraphics[width=0.95\textwidth]{figuras/contestacoes_listar.png}
    \caption{Interface de listagem de contestações com busca e paginação (dados fictícios).}
@@ -22,7 +22,7 @@ A tela administrativa de contestações exibe tabela paginada com ID da pessoa, 
 Após analisar mapa e justificativa, administrador pode aprovar contestação clicando botão com confirmação de duplo clique (prevenção contra aprovação acidental). Sistema executa validações adicionais: contestação não pode ter sido processada anteriormente, viagem deve ter origem e destino definidos e distintos, usuário deve estar em coorte ativa, e distância entre origem-destino $\geq$ 1km. Cálculo de remuneração segue fórmula oficial: \texttt{distancia\_km = min(8000, distancia\_metros) / 1000; remuneracao = distancia\_km * valor\_por\_km\_da\_coorte}. Distância é limitada em 8km (viagens mais longas recebem teto de 8km) para controlar orçamento. Ao aprovar, sistema: atualiza status da viagem para ``Aprovado'', salva valor de remuneração, adiciona crédito à fila de pagamentos, marca a contestação como aprovada, e opcionalmente salva resposta textual do administrador (feedback ao participante). Mensagem de sucesso confirma: ``Contestação da viagem 12345 aprovada com remuneração de R\$ 4,50''. A Figura~\ref{fig:contestacao_aprovar} ilustra a interface de aprovação/rejeição (dados fictícios para fins ilustrativos).
 
  
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.95\textwidth]{figuras/contestacao_aprovar.PNG}
     \caption{Interface de aprovação/rejeição de contestação (dados fictícios).}

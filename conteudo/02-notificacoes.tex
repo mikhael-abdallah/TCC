@@ -11,7 +11,7 @@ A interface oferece três estratégias de direcionamento: (i) envio individual p
 
 O formulário de criação requer título (usado como assunto de email e cabeçalho de push notification) e corpo da mensagem. Campo de corpo aceita HTML completo, permitindo formatação rica em emails: parágrafos (\texttt{<p>}), quebras de linha (\texttt{<br>}), negrito (\texttt{<strong>}), listas, e links. Suporte a HTML mostrou-se valioso para comunicações longas ou complexas, como FAQ respondendo dúvidas recorrentes ou instruções passo-a-passo para resolver problemas comuns. Push notifications, devido a limitações de espaço em dispositivos móveis, exibem apenas texto plano, adequado para mensagens concisas. Checkbox independentes para cada canal (push e/ou email) permitem escolher meio mais apropriado: push para alertas urgentes que requerem atenção imediata; email para informações detalhadas que usuário pode consultar posteriormente. A Figura~\ref{fig:notificacao_criar} mostra a interface de criação.
 
- \begin{figure}[H]
+ \begin{figure}[htb]
    \centering
    \includegraphics[width=0.95\textwidth]{figuras/notificacao_criar.PNG}
    \caption{Formulário de criação e envio de notificações para participantes.}

@@ -10,7 +10,7 @@ A tabela de viagens apresenta oito colunas principais: ID da viagem (identificad
 
 O campo de busca permite filtrar viagens por ID de usuário específico (busca exata). Esta funcionalidade atende cenário operacional frequente: participante relata problema com viagem; administrador identifica ID do usuário na tela de participantes; busca todas viagens daquele usuário; localiza a viagem em questão (geralmente reconhecível por data/horário ou trajeto). A Figura~\ref{fig:viagens_listar} mostra a interface de listagem (dados fictícios para fins ilustrativos).
 
- \begin{figure}[H]
+ \begin{figure}[htb]
    \centering
    \includegraphics[width=0.95\textwidth]{figuras/viagens_listar.png}
    \caption{Interface de listagem de viagens com funcionalidades de busca, ordenação e paginação (dados fictícios).}
@@ -19,7 +19,7 @@ O campo de busca permite filtrar viagens por ID de usuário específico (busca e
 
 Ao clicar em qualquer linha da tabela, a interface renderiza mapa interativo (biblioteca Leaflet.js com tiles OpenStreetMap) exibindo trajeto completo da viagem abaixo da tabela. O mapa plota marcadores para cada ponto GPS coletado pelo aplicativo durante a viagem, conectados por linha azul na ordem temporal. Popups nos marcadores exibem timestamp de cada ponto. Zoom automático enquadra toda rota, e controles padrão (zoom, pan, scroll) permitem inspeção detalhada. Esta funcionalidade revelou-se crítica para validação de viagens contestadas: administradores visualizavam se trajeto realmente conectava origem e destino declarados, se passava por vias adequadas para ciclismo, e se não apresentava anomalias (ex: teletransportes indicando GPS incorreto). A Figura~\ref{fig:mapa_contestacao} ilustra a visualização de um trajeto (dados fictícios para fins ilustrativos).
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.95\textwidth]{figuras/mapa_contestacao.PNG}
     \caption{Visualização de trajeto de viagem entre IME e o Metrô Butantã no mapa interativo com marcadores de pontos GPS.}

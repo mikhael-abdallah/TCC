@@ -11,7 +11,7 @@ Característica distintiva do desenho foi rotação semanal de coortes: cada par
 A interface de coortes oferece funcionalidades para criação, listagem, e atribuição de participantes a grupos. Criação/atualização requer ID numérico único (1, 2, 3) e valor de remuneração por quilômetro; sistema automaticamente cria nova coorte se ID inexistente, ou atualiza valor se ID já cadastrado (útil para ajustes durante piloto sem recriar grupo). Listagem exibe ID, remuneração formatada como moeda (R\$~0,30), e quantidade de membros associados, com busca por ID específico e paginação (5 itens/página). Durante piloto com 1.217 participantes, distribuição manteve-se aproximadamente balanceada: ~400 participantes por coorte em qualquer semana dada, essencial para comparabilidade estatística. A Figura~\ref{fig:coortes_listagem} mostra esta interface (dados fictícios para fins ilustrativos).
 
 
- \begin{figure}[H]
+ \begin{figure}[htb]
    \centering
    \includegraphics[width=0.95\textwidth]{figuras/coortes.PNG}
    \caption{Interface de gerenciamento de coortes e visualização de quantidade de participantes por grupo (dados fictícios).}
@@ -20,7 +20,7 @@ A interface de coortes oferece funcionalidades para criação, listagem, e atrib
 
  A tela também contém uma tabela que lista todos usuários com respectivas coortes, exibindo ID, nome, email, total de viagens realizadas, e ID da coorte atual. Sistema de filtros combinados permite: busca por ID de pessoa, nome parcial (\textit{case-insensitive}), email, ID de coorte específica, e intervalo de viagens (mínimo/máximo). Filtros aplicam-se simultaneamente via lógica AND e persistem durante paginação. Esta funcionalidade atendeu múltiplos casos de uso: (i) verificar balanceamento de grupos (filtrar por ID de coorte, observar contagem); (ii) identificar participantes inativos (por exemplo, buscando com o filtro de usuários com no máximo 2 viagens); (iii) selecionar participantes altamente engajados para entrevistas qualitativas (por exemplo, buscando com o filtro de usuários com no mínimo 30 viagens); (iv) auditar atribuições após rotação semanal (exportar CSV, comparar com planilha esperada). A Figura~\ref{fig:coortes_listagem_usuarios} ilustra esta funcionalidade (dados fictícios para fins ilustrativos).
 
- \begin{figure}[H]
+ \begin{figure}[htb]
     \centering
     \includegraphics[width=0.95\textwidth]{figuras/usuario_coortes_zoom.PNG}
     \caption{Interface de listagem de participantes por coorte (dados fictícios).}
@@ -31,7 +31,7 @@ Para correções pontuais, administrador pode editar coorte de usuário específ
 
 Durante piloto, rotação semanal típica seguia workflow: economistas geravam CSV com nova atribuição usando script (randomização estratificada por perfil socioeconômico e localização geográfica); administrador fazia upload via painel (Figura~\ref{fig:coortes_listagem_upload}); sistema atualizava os registros; notificações push/email informavam participantes sobre nova remuneração vigente; exportação CSV pós-upload confirmava aplicação correta. Este processo de rotação semanal ao longo do projeto piloto evidenciou robustez e eficiência da funcionalidade.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.95\textwidth]{figuras/upload_coortes.PNG}
     \caption{Interface de upload de atribuição de coortes em lote.}
@@ -40,7 +40,7 @@ Durante piloto, rotação semanal típica seguia workflow: economistas geravam C
 
 O botão de exportação gera CSV completo com ID, nome, CPF, email, ID da coorte, e valor de remuneração atual. O formato compatível com ferramentas estatísticas e facilita análises, o nome do arquivo gerado inclui a data da exportação, importante para criar um histórico versionado. A Figura~\ref{fig:coortes_listagem_exportar} mostra esta funcionalidade.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.95\textwidth]{figuras/exportar_coortes.PNG}
     \caption{Interface de exportação de coortes.}

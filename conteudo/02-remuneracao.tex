@@ -47,7 +47,7 @@ rastreabilidade. Ao gerar o CSV, o sistema automaticamente move os valores de
 \texttt{aguardandoEnvio} para \texttt{aguardandoResposta}, evitando duplicação em
 envios subsequentes. Esta operação é atômica e registrada em log para auditoria. A Figura~\ref{fig:remuneracao_gerar_csv_form_creditos} mostra a interface de geração.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.95\textwidth]{figuras/remuneracao_creditos.png}
     \caption{Interface de geração de lista de créditos a pagar via SPTrans.}
@@ -75,7 +75,7 @@ validadas com sucesso, o sistema processa a confirmação: move valores de
 mais de duas colunas'', ``Formato incorreto de valor'', ``Bilhete não encontrado'')
 facilitam correção rápida de problemas antes de reprocessar. A Figura~\ref{fig:remuneracao_gerar_csv_form_processados} ilustra a interface de upload.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.95\textwidth]{figuras/remuneracao_processados.png}
     \caption{Interface de upload de comprovante de pagamentos realizados pela SPTrans.}

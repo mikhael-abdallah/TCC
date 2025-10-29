@@ -12,23 +12,25 @@
 % geram automaticamente a referência para o próprio documento, conforme
 % as normas sugeridas da USP.
 \resumo{
-Este Trabalho apresenta o desenvolvimento de um painel
-administrativo para o piloto do programa Bike~SP, iniciativa da Prefeitura de
-São Paulo em parceria com a USP voltada à promoção do ciclismo urbano por meio
-de incentivos financeiros. O trabalho descreve o contexto e implementação do painel,
-que apoiou o pré-teste entre Abril e Maio, a incrição de 3 mil pessoas e o acompanhamento
-do projeto piloto, que teve duração de quatro semanas.
-O painel foi essencial para a gestão operacional do projeto, sendo importante para a 
-gestão de cadastros, acompanhamento do uso do app, monitoramento das viagens 
-e gestão dos pagamentos.
+A Lei Municipal 16.547/2016 de São Paulo instituiu o programa BikeSP, que prevê incentivos financeiros para promover o ciclismo urbano como meio de transporte sustentável. Em 2023, uma parceria entre a Prefeitura de São Paulo e a USP iniciou um projeto piloto para gerar evidências científicas que fundamentem a regulamentação dessa lei. O piloto envolveu 1217 participantes divididos em três coortes com diferentes níveis de remuneração por quilômetro pedalado.
+
+A execução do piloto exigia uma infraestrutura robusta de gestão operacional, incluindo controle de inscrições, atribuição de coortes, cálculo de remunerações, tratamento de contestações e auditoria de transações financeiras. Não havia ferramentas adequadas para gerenciar a complexidade do experimento, que combinava aspectos técnicos (validação de viagens via GPS), administrativos (gestão de 3 mil inscrições) e financeiros (pagamentos via SPTrans). A operação manual desses processos seria inviável dada a escala do projeto.
+
+Este trabalho apresenta o desenvolvimento de um painel administrativo web que centralizou toda a gestão operacional do piloto BikeSP. O sistema implementou funcionalidades para inserção de usuários, gerenciamento de coortes, concessão de bônus, cálculo e auditoria de remunerações, tratamento de contestações, visualização de viagens em mapas, envio de notificações e correção de dados de geolocalização. A arquitetura integrou-se ao aplicativo móvel, ao banco de dados PostgreSQL e à infraestrutura de pagamentos da SPTrans.
+
+O piloto alcançou resultados expressivos: mais de 29 mil viagens registradas, totalizando 150 mil quilômetros pedalados ao longo de dois meses de coleta intensiva de dados. O painel processou com sucesso todas as operações financeiras, gerenciou o desenho experimental com alternância semanal de coortes e apoiou o atendimento a participantes. Um formulário de avaliação aplicado aos principais usuários revelou unanimidade quanto à utilidade do sistema (média 4,75/5 em facilidade de uso) e confirmou que o painel viabilizou a execução do piloto.
+
+O painel desenvolvido foi declarado como essencial pelos coordenadores do projeto, sendo descrito como impossível conduzir o experimento sem ele. Os dados coletados fundamentarão um documento de recomendações para a regulamentação da Lei Municipal 16.547/2016. O sistema está sendo adaptado para replicação em Fortaleza, demonstrando seu potencial de impacto em políticas públicas de mobilidade urbana em outras cidades brasileiras.
 }
 
 \abstract{
-This Thesis presents the development of an administrative dashboard for
-the Bike-SP program pilot, an initiative by the São Paulo City Hall in partnership with
-USP to promote urban cycling through financial incentives. The work describes the context
-and implementation of the dashboard, which supported a pre-test (April-May), the 
-registration of 3,000 users, and the monitoring of the four-week pilot project. The 
-dashboard was essential for the project's operational management, handling user 
-registration, app usage tracking, trip monitoring, and payment management.
+São Paulo's Municipal Law 16.547/2016 established the BikeSP program, which provides financial incentives to promote urban cycling as a sustainable mode of transportation. In 2023, a partnership between São Paulo City Hall and USP launched a pilot project to generate scientific evidence to support the regulation of this law. The pilot involved 1,217 participants divided into three cohorts with different levels of remuneration per kilometer cycled.
+
+The pilot's execution required a robust operational management infrastructure, including registration control, cohort assignment, remuneration calculation, dispute handling, and financial transaction auditing. There were no adequate tools to manage the experiment's complexity, which combined technical aspects (GPS-based trip validation), administrative tasks (managing 3,000 registrations), and financial operations (payments via SPTrans). Manual operation of these processes would be unfeasible given the project's scale.
+
+This work presents the development of a web-based administrative dashboard that centralized all operational management of the BikeSP pilot. The system implemented functionalities for user insertion, cohort management, bonus allocation, remuneration calculation and auditing, dispute handling, trip visualization on maps, notification delivery, and geolocation data correction. The architecture integrated with the mobile application, PostgreSQL database, and SPTrans payment infrastructure.
+
+The pilot achieved expressive results: over 29,000 registered trips, totaling 150,000 kilometers cycled over two months of intensive data collection. The dashboard successfully processed all financial operations, managed the experimental design with weekly cohort alternation, and supported participant assistance. An evaluation survey applied to key users revealed unanimous agreement on the system's usefulness (4.75/5 average for ease of use) and confirmed that the dashboard made the pilot's execution viable.
+
+The developed dashboard was declared essential by project coordinators, who described conducting the experiment without it as impossible. The collected data will support a recommendations document for the regulation of Municipal Law 16.547/2016. The system is being adapted for replication in Fortaleza, demonstrating its potential impact on urban mobility public policies in other Brazilian cities.
 }

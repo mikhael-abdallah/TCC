@@ -10,7 +10,7 @@ A funcionalidade de inserção em lote, acessível via botão ``Inserir Usuário
 
 Execução ocorre em thread separada (processamento assíncrono) para não bloquear interface administrativa durante operação (geocodificação via APIs externas é o gargalo principal). Botão fica desabilitado durante processamento, prevenindo cliques duplos que iniciariam múltiplas execuções simultâneas. Mensagem inicial ``Usuários novos estão sendo inseridos!'' confirma início; mensagem final reporta quantidade inserida (``X usuários inseridos com sucesso'') ou erros encontrados. A Figura~\ref{fig:insercao_usuarios} mostra a interface desta funcionalidade.
 
-\begin{figure}[H]
+\begin{figure}[htb]
   \centering
   \includegraphics[width=0.95\textwidth]{figuras/inserir_usuarios.PNG}
   \caption{Interface de inserção de usuários no painel administrativo, com botão para executar o script de importação do LimeSurvey.}
