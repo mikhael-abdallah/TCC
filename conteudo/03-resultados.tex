@@ -53,7 +53,7 @@ Entre os ganhos observados com o uso do painel:
 \section{Avaliação do painel administrativo}
 \label{sec:avaliacao-painel}
 
-Ao final do piloto, foi aplicado um formulário de avaliação do painel administrativo aos principais usuários da ferramenta. O objetivo era coletar feedback sobre usabilidade, funcionalidades implementadas e identificar oportunidades de melhoria para futuras iterações do sistema. O formulário foi respondido por 4 usuários, sendo 3 que utilizaram o painel diariamente durante o piloto (Kaiky Cintra, Sávio Campos e Fabio Kon) e 1 usuário ocasional (Paulo Meirelles).
+Ao final do piloto, foi aplicado um formulário de avaliação do painel administrativo aos principais usuários da ferramenta. O objetivo era coletar feedback sobre usabilidade, funcionalidades implementadas e identificar oportunidades de melhoria para futuras iterações do sistema. O formulário foi respondido por 5 usuários, sendo 3 que utilizaram o painel diariamente durante o piloto (Kaiky Cintra, Sávio Campos e Fabio Kon) e 2 usuários ocasionais (Paulo Meirelles e Nelson Lago).
 
 \subsection{Utilidade e satisfação geral}
 
@@ -76,31 +76,33 @@ Um comentário particularmente relevante foi: ``\textit{excelente trabalho. o pa
 O formulário incluiu avaliações quantitativas em escala de 1 a 5 para seis aspectos do painel. Os resultados foram:
 
 \begin{itemize}
-  \item \textbf{Facilidade de uso}: média 4,75 (75\% avaliaram como excelente)
-  \item \textbf{Velocidade e desempenho}: média 4,5 (75\% avaliaram como excelente)
-  \item \textbf{Clareza e organização}: média 4,25
-  \item \textbf{Design e aparência}: média 4,25
-  \item \textbf{Completude de funcionalidades}: média 4,0
-  \item \textbf{Completude de informações}: média 3,75
+  \item \textbf{Facilidade de uso}: média 4,6 (60\% avaliaram como excelente)
+  \item \textbf{Velocidade e desempenho}: média 4,6 (80\% avaliaram como excelente)
+  \item \textbf{Clareza e organização}: média 4,4
+  \item \textbf{Design e aparência}: média 4,2
+  \item \textbf{Completude de funcionalidades}: média 3,8
+  \item \textbf{Completude de informações}: média 3,6
 \end{itemize}
 
-Os pontos mais fortes identificados foram a facilidade de uso e a velocidade do sistema. A alta avaliação de usabilidade (4,75) é notável considerando que os usuários participaram do desenvolvimento do sistema. A velocidade do sistema foi destacada explicitamente: ``\textit{Velocidade excelente para todas as funcionalidades}'', aspecto crítico para operações que envolviam consultas diárias a tabelas com dezenas de milhares de registros.
+Os pontos mais fortes identificados foram a facilidade de uso e a velocidade do sistema, ambos com média 4,6. A alta avaliação de usabilidade é notável considerando que os usuários não receberam treinamento formal. A velocidade do sistema foi destacada explicitamente: ``\textit{Velocidade excelente para todas as funcionalidades}'', aspecto crítico para operações que envolviam consultas diárias a tabelas com dezenas de milhares de registros.
 
 A visualização de mapas das viagens foi citada por múltiplos respondentes como funcionalidade de destaque, tanto pela qualidade visual quanto pela utilidade prática: ``\textit{facilidade de identificar problemas de localização}'' e uso para ``\textit{verificar se havia pessoas de todas as regiões da cidade}''.
 
 \subsection{Limitações e oportunidades de melhoria}
 
-A completude de informações recebeu a menor média (3,75), refletindo limitações identificadas pelos usuários:
+A completude de informações recebeu a menor média (3,6), refletindo limitações identificadas pelos usuários:
 
 \begin{itemize}
   \item \textbf{Navegação entre entidades}: Falta de interligação direta entre as páginas de contestações, viagens e usuários. O fluxo atual requer anotar IDs manualmente e alternar entre páginas, processo que poderia ser otimizado com links diretos.
   \item \textbf{Busca limitada}: A página de usuários permite busca apenas por nome ou ID, sem possibilidade de buscar por CPF ou e-mail diretamente.
+  \item \textbf{Clareza sobre campos}: Nem sempre é óbvio qual informação deve ser inserida em cada campo. Tooltips ou mensagens de ajuda poderiam esclarecer, por exemplo, se um campo espera o ID da viagem ou do usuário.
   \item \textbf{Visibilidade de regras}: Ausência de indicação sobre o motivo específico de rejeição de viagens, dificultando o diagnóstico de problemas reportados por participantes.
   \item \textbf{Rate limiting}: Limite de 50 atualizações por hora na correção de localizações, que foi atingido durante operações intensivas de correção.
   \item \textbf{Tabelas do banco}: O painel não expõe todas as 22 tabelas do banco de dados, faltando, por exemplo, consulta à tabela de pares válidos.
+  \item \textbf{Compatibilidade}: Relatos de problemas de compatibilidade com o navegador Firefox, especialmente nas fases iniciais do projeto.
 \end{itemize}
 
-As sugestões de melhorias futuras incluíram: (i) página unificada por usuário, consolidando bilhetes, localizações e viagens; (ii) página unificada por localização, mostrando usuários e pares válidos; (iii) correção em lote para endereços com mesmo nome; e (iv) melhor identificação da causa de rejeição de viagens (se foi pelo Google Activities ou pelo algoritmo de validação próprio).
+As sugestões de melhorias futuras incluíram: (i) página unificada por usuário, consolidando bilhetes, localizações e viagens; (ii) página unificada por localização, mostrando usuários e pares válidos; (iii) correção em lote para endereços com mesmo nome; (iv) melhor identificação da causa de rejeição de viagens (se foi pelo Google Activities ou pelo algoritmo de validação próprio); e (v) adição de tooltips e mensagens de ajuda para esclarecer informações esperadas em cada campo.
 
 Importante notar que estas limitações foram identificadas após o uso do sistema e representam oportunidades de evolução, não impedimentos à operação do piloto. Como observado por um usuário: ``\textit{De modo geral a plataforma admin do bike SP apresenta boa interação com o usuário e boas funcionalidades}''.
 
