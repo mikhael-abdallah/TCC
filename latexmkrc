@@ -18,7 +18,8 @@
 
 # Compilação forçando a versão do pdf para 1.7 com a package bxpdfver
 # jobname define o nome do arquivo de saída (PDF)
-set_tex_cmds('-synctex=1 -halt-on-error -jobname="Monografia Mikhael Pinto" %O %P');
+set_tex_cmds('-synctex=1 -halt-on-error -jobname=%A %O %P');
+
 $pre_tex_code = '\RequirePackage[1.7]{bxpdfver}';
 
 
