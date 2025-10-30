@@ -1,4 +1,4 @@
-@default_files = ('tese');
+@default_files = ('Monografia - Mikhael Pinto');
 
 # TeXLive até no mínimo 2023 produz PDFs identificados como versão 1.5.
 # Ao incorporar arquivos PDF de imagem com versões mais novas, isso faz
