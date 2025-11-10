@@ -50,6 +50,7 @@ O projeto piloto do BikeSP foi implementado entre abril e agosto, com a particip
       \item \textbf{Julho}: Ampliação do uso do aplicativo, fase em que a equipe de operações monitorou o uso e ofereceu suporte aos participantes através do painel.
       \item \textbf{Agosto}: execução do piloto principal, com duração de \textbf{4 
       semanas}.
+      \item \textbf{Setembro-Outubro}: Uso continuado do aplicativo pelos participantes mesmo após o fim das remunerações.
     \end{itemize}
 
 O formulário de inscrição criado na plataforma LimeSurvey permitiu
@@ -84,9 +85,22 @@ encerramento oficial do piloto: em setembro e outubro, mesmo sem remuneração,
 os ciclistas continuaram utilizando o aplicativo para registrar suas viagens. 
 O piloto terminou em agosto com aproximadamente \textbf{27~mil viagens 
 registradas}, mas em outubro o sistema já contabilizava mais de \textbf{30~mil 
-viagens}. Esse comportamento demonstra que o aplicativo gerou valor além do 
-incentivo financeiro, sugerindo engajamento genuíno com a plataforma e potencial 
+viagens}, conforme evidenciado na Figura~\ref{fig:30mil-viagens}. Esse 
+comportamento demonstra que o aplicativo gerou valor além do incentivo 
+financeiro, sugerindo engajamento genuíno com a plataforma e potencial 
 de retenção de usuários mesmo na ausência de recompensas monetárias.
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=0.95\textwidth]{figuras/30_mil_viagens.jpg}
+  \caption{Captura de tela da lista de viagens no painel administrativo em 29/10/2025, 
+  mostrando que o sistema havia ultrapassado 30 mil viagens registradas (ID da viagem 
+  mais recente: 30073). Nota-se que todas as viagens exibidas têm remuneração zerada 
+  (R\$~0,00), pois foram realizadas após o encerramento oficial do piloto em agosto, 
+  evidenciando o uso continuado do aplicativo pelos participantes mesmo sem incentivo 
+  financeiro.}
+  \label{fig:30mil-viagens}
+\end{figure}
 
 % Depois ver se é necessário essa seção
 %\textbf{Atores e processos.} Atores principais: participantes, equipe de
@@ -101,6 +115,13 @@ de retenção de usuários mesmo na ausência de recompensas monetárias.
 Este trabalho teve como objetivo desenvolver um \textbf{painel administrativo} para ser a ferramenta central de operação e governança do programa piloto. A plataforma dá suporte efetivo aos processos fundamentais.
 
 Em alto nível, o painel oferece visibilidade sobre cadastros, elegibilidade e amostras. Ele também permite o acompanhamento de viagens registradas no aplicativo e o cálculo de créditos, com trilhas de auditoria e apoio a pagamentos. Além disso, a ferramenta cuida do tratamento de contestações e gera exportações e insumos para monitoramento e análise.
+
+Um uso adicional do painel foi o suporte a pesquisas complementares ao piloto. 
+Por exemplo, o painel foi utilizado para identificar e selecionar os participantes 
+que percorriam mais quilômetros usando bicicleta, permitindo que pesquisadores convidassem esses 
+ciclistas mais ativos para participar de estudos específicos de coleta de dados, 
+como pesquisas sobre qualidade do ar, do solo e proximidade de veículos durante deslocamentos 
+urbanos realizadas em parceria com uma startup brasileiro-alemã.
 
 O próximo capítulo apresenta detalhadamente a implementação do painel administrativo, descrevendo a arquitetura de software do sistema BikeSP e cada uma das funcionalidades desenvolvidas para atender aos objetivos aqui descritos.
 

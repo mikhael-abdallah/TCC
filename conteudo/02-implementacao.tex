@@ -43,7 +43,7 @@ economistas.
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=0.95\textwidth]{diagrama_3.png}
+  \includegraphics[width=0.95\textwidth]{diagrama_arquitetura_bikesp.png}
   \caption{Diagrama simplificado dos componentes do sistema BikeSP.}
   \label{fig:arquitetura}
 \end{figure}
@@ -51,15 +51,98 @@ economistas.
 \section{Processo de desenvolvimento}
 \label{sec:processo-desenvolvimento}
 O desenvolvimento envolveu múltiplos stakeholders e ciclos curtos de validação:
-economistas (por exemplo, Thainá), suporte/atendimento (Sávio), coordenação e
-orientação (Fábio e Paulo), além da equipe técnica. As demandas foram
-priorizadas e acompanhadas via registro de \textit{issues}, criação de
-\textit{pull requests} e revisão colaborativa, organizada no Gitlab, com homologação contínua durante
+economistas (Tainá Souza Pacheco e Ciro Biderman), suporte e atendimento (Sávio 
+Campos de Souza), coordenação e orientação (Fabio Kon e Paulo Meirelles), além 
+da equipe de desenvolvimento (Kaiky Cintra e Mikhael Pinto). As demandas foram priorizadas e 
+acompanhadas via registro de \textit{issues}, criação de \textit{pull requests} 
+e revisão colaborativa, organizada no Gitlab, com homologação contínua durante
 o pré-teste, o período de inscrições, a preparação de julho e a execução do
 piloto.
 
+\section{Arquitetura do backend}
+\label{sec:arquitetura-backend}
+O backend do sistema BikeSP foi desenvolvido utilizando o framework Flask (versão 
+3.0.0), um framework web para Python que oferece flexibilidade 
+na organização de código e escalabilidade para aplicações de médio a grande porte. 
+A escolha do Flask se justifica por sua natureza modular, extensa documentação, 
+comunidade ativa e capacidade de integração com bibliotecas especializadas.
+
+O backend implementado consiste em \textbf{171 arquivos Python}, totalizando 
+\textbf{21.325 linhas de código}, organizados em uma arquitetura de camadas bem 
+definida. O sistema conta com \textbf{848 funções} implementadas, distribuídas 
+em módulos especializados que seguem o princípio de separação de responsabilidades. 
+A aplicação expõe \textbf{69 rotas HTTP} através de \textbf{22 módulos de 
+endpoints} distintos, servindo tanto o aplicativo móvel quanto o painel 
+administrativo web através de \textbf{42 templates HTML} renderizados no servidor.
+
+A estrutura arquitetural segue uma \textbf{arquitetura em camadas} (layered 
+architecture) com clara separação de responsabilidades entre apresentação, lógica 
+de negócio e acesso a dados. O sistema combina duas abordagens arquiteturais 
+complementares: (i) API RESTful para comunicação com o aplicativo móvel, onde 
+endpoints retornam dados em formato JSON; e (ii) MTV (Model-Template-View) para 
+o painel administrativo web, onde templates Jinja2 são renderizados no servidor. 
+
+As três camadas principais são:
+
+\begin{itemize}
+  \item \textbf{Camada de Apresentação}: Composta por 22 módulos de endpoints 
+  que recebem requisições HTTP e 42 templates HTML para o painel administrativo. 
+  Inclui decoradores de validação que interceptam e validam requisições antes 
+  do processamento.
+  
+  \item \textbf{Camada de Lógica de Negócio}: Contém gerenciadores que orquestram 
+  operações complexas, processadores de domínio específicos (viagem, contestação, 
+  remuneração), classes de domínio com métodos de validação (Viagem, Local, 
+  Trajeto) e validadores de CPF, email e coordenadas.
+  
+  \item \textbf{Camada de Acesso a Dados}: Implementada através de 115 funções 
+  especializadas: 75 funções de consulta, 23 funções de inserção, 
+  8 funções de atualização e 9 funções de remoção, todas 
+  utilizando queries SQL parametrizadas com proteção contra SQL injection.
+\end{itemize}
+
+Esta organização modular permite que cada componente seja desenvolvido, testado 
+e mantido de forma independente, facilitando tanto a escalabilidade horizontal 
+quanto a manutenibilidade do código ao longo do ciclo de vida do projeto.
+
+A aplicação Flask é inicializada através de um padrão factory
+que configura todas as extensões, registra blueprints, define middlewares de 
+segurança e estabelece conexões com serviços externos como Firebase para 
+autenticação e notificações push. Esta abordagem permite a criação de múltiplas 
+instâncias da aplicação com configurações distintas para desenvolvimento, testes 
+e produção.
+
+O sistema implementa múltiplas camadas de segurança através de JWT (JSON Web 
+Tokens) para autenticação stateless, hash de senhas e rate limiting 
+por IP e por usuário.
+
+A integração com serviços externos é realizada através de módulos especializados 
+que se conectam com: Firebase Admin SDK (autenticação e notificações push via 
+FCM), APIs de geocodificação (TomTom, Google Maps e Nominatim) com fallback em 
+cascata, e SMTP via Gmail para envio de emails transacionais.
+
+O painel administrativo utiliza templates Jinja2 com renderização no servidor e 
+interatividade client-side através de HTMX (Hypermedia-Driven Applications). 
+Os 42 templates estão organizados em 9 páginas principais (Bônus, Contestações, 
+Coortes, Inserção de Usuários, Localizações, Notificações, Remuneração, Usuários 
+e Viagens) e mais de 30 componentes reutilizáveis como tabelas dinâmicas, 
+formulários e modais. A visualização de mapas de trajetos e localizações é 
+implementada usando a biblioteca Leaflet.js com tiles OpenStreetMap.
+
 \section{Abas do painel e uso no piloto}
 \label{sec:abas-painel}
+
+A Figura~\ref{fig:painel-geral} apresenta uma visão geral do painel administrativo, 
+mostrando o menu de navegação com todas as funcionalidades disponíveis e a interface 
+da página de viagens. O sistema organiza as funcionalidades em 9 páginas principais 
+acessíveis através do menu lateral esquerdo.
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=0.95\textwidth]{figuras/bikesp_full.png}
+  \caption{Visão geral do painel administrativo BikeSP mostrando o menu de navegação e a página de viagens.}
+  \label{fig:painel-geral}
+\end{figure}
 
 \subsection{Inserção de usuários}
 \input{conteudo/02-insercao-usuarios}

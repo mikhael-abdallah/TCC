@@ -7,7 +7,7 @@
 A Lei Municipal 16.547/2016 estabeleceu
 que o pagamento aos ciclistas do programa BikeSP seria realizado através de créditos
 de transporte público, inseridos diretamente nos cartões Bilhete Único dos
-participantes. Esta escolha reflete a intenção do governo municipal de integrar a
+participantes. Essa escolha reflete a intenção do governo municipal de integrar a
 bicicleta ao sistema de transporte público, permitindo que os incentivos sejam
 utilizados para deslocamentos multimodais (bicicleta + ônibus/metrô). O modelo de
 remuneração por quilômetro pedalado, adotado também em iniciativas internacionais
@@ -33,7 +33,7 @@ contestações deferidas que ainda não foram enviados à SPTrans; (ii)
 \texttt{aguardandoResposta} --- valores já enviados à SPTrans através de arquivo
 CSV, aguardando confirmação de creditação; e (iii) \texttt{concedido} --- valores
 confirmados pela SPTrans como efetivamente creditados nos cartões Bilhete Único dos
-participantes. Esta separação em estados permite rastreabilidade completa do fluxo
+participantes. Essa separação em estados permite rastreabilidade completa do fluxo
 financeiro e reconciliação precisa entre solicitações, confirmações e valores
 efetivamente pagos.
 
@@ -45,7 +45,7 @@ Bilhete Único e valor), sem cabeçalho. O nome do arquivo inclui data e hora co
 \texttt{pagamentos05-10-2024-14-30-25.csv}) para garantir unicidade e
 rastreabilidade. Ao gerar o CSV, o sistema automaticamente move os valores de
 \texttt{aguardandoEnvio} para \texttt{aguardandoResposta}, evitando duplicação em
-envios subsequentes. Esta operação é atômica e registrada em log para auditoria. A Figura~\ref{fig:remuneracao_gerar_csv_form_creditos} mostra a interface de geração.
+envios subsequentes. Essa operação é atômica e registrada em log para auditoria. A Figura~\ref{fig:remuneracao_gerar_csv_form_creditos} mostra a interface de geração.
 
 \begin{figure}[htb]
     \centering
@@ -54,13 +54,20 @@ envios subsequentes. Esta operação é atômica e registrada em log para audito
     \label{fig:remuneracao_gerar_csv_form_creditos}
   \end{figure}
 
-O arquivo CSV gerado é enviado
-manualmente à SPTrans. A SPTrans credita os valores nos cartões Bilhete
-Único dos participantes e retorna um arquivo CSV de comprovação contendo os bilhetes
-efetivamente creditados e os valores pagos. Este processo manual, embora não
-automatizado, mostrou-se adequado para a escala do piloto (cerca de 1.200
-participantes) e garante supervisão humana sobre transações financeiras, reduzindo
-riscos de erros sistêmicos em larga escala.
+O arquivo CSV gerado é enviado manualmente à SPTrans por meio de upload na 
+plataforma \textbf{Loja Virtual da SPTrans} 
+(\url{https://lv.sbe.sptrans.com.br/vcw/login.action}). Através deste portal, 
+que atende Pessoas Jurídicas para gestão de Vale-Transporte de funcionários, 
+é realizado um ``Pedido por Upload'' para creditar valores em múltiplos 
+cartões Bilhete Único de uma só vez.
+
+Após o envio do arquivo, a SPTrans processa a solicitação, credita os valores 
+nos cartões Bilhete Único dos participantes e retorna um arquivo CSV de 
+comprovação, detalhando os bilhetes efetivamente creditados e os valores pagos. 
+Esse processo, embora não seja uma integração de sistema totalmente 
+automatizada, mostrou-se adequado para a escala do piloto (cerca de 1.200 
+participantes), pois garante supervisão humana sobre transações financeiras, 
+reduzindo riscos de erros sistêmicos em larga escala.
 
 
 
